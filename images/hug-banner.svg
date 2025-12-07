@@ -1,0 +1,15 @@
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="200" rx="16" fill="#1c1c1c"/>
+    
+    <!-- Icon -->
+    <rect x="40" y="36" width="128" height="128" rx="24" fill="#e6a855"/>
+    <text x="48" y="120" font-family="monospace" font-size="64" font-weight="600" fill="#2563eb">{</text>
+    <text x="80" y="108" font-family="monospace" font-size="32" font-weight="600" fill="#1a1a1a">)-(</text>
+    <text x="120" y="120" font-family="monospace" font-size="64" font-weight="600" fill="#2563eb">}</text>
+    
+    <!-- Title -->
+    <text x="200" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="300" fill="#e8e8e8">HuG ("Here U Go")</text>
+    
+    <!-- Tagline -->
+    <text x="200" y="130" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#888888">Text/Code Snippet Manager</text>
+</svg>

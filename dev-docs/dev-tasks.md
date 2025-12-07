@@ -1,0 +1,54 @@
+# Tasks
+
+- [x] Create Project Structure
+    - [x] Check existing structure
+    - [x] Create missing directories
+    - [x] Create initial empty files if needed (or just directories)
+- [x] Initialize Documentation
+    - [x] Create CHANGELOG-Master.md
+    - [x] Create CHANGELOG-Phase-1.md (Placeholder or Initial)
+    - [x] Update CHANGELOG-Master with Phase 1 Overview
+- [ ] Phase 2: Core Services
+    - [x] Create Configuration Module ([src/hug/config.py](file:///home/chuck/Dropbox/Programming/Languages_and_Code/Programming_Projects/Code_Editors/HuG/src/hug/config.py))
+    - [x] Create Data Models (`src/hug/models/`)
+        - [x] Snippet Model
+        - [x] Library Model
+    - [x] Create Services (`src/hug/services/`)
+        - [x] Text Inserter
+        - [x] Hotkey Service
+    - [x] Create Basic Application Class (`src/hug/app.py`)
+    - [x] Create Entry Point (`src/hug/__main__.py`)
+    - [x] Verify/Test Core Services
+    - [x] Update Changelogs
+- [ ] Phase 3: Basic UI
+    - [x] Create Resources (Icons)
+    - [x] Implement System Tray (`src/hug/ui/tray.py`)
+    - [x] Connect Tray to App (`src/hug/app.py`)
+    - [x] Implement Dynamic Menu Building
+    - [x] Verify System Tray & Insertion
+    - [x] Update Changelogs
+- [ ] Phase 4: Floating Palette
+    - [x] Create UI Widgets (`src/hug/ui/widgets/`)
+        - [x] Snippet Tree
+        - [x] Preview Pane
+    - [x] Create Palette Window (`src/hug/ui/palette.py`)
+    - [x] Implement Search/Filter Logic
+    - [x] Integrate Palette into App (`src/hug/app.py`)
+    - [x] Integrate Palette into App (`src/hug/app.py`)
+    - [x] Verify Palette Functionality
+    - [x] Update Changelogs
+- [ ] Phase 5: Settings & Polish
+    - [x] Create Settings Dialog (`src/hug/ui/settings.py`)
+    - [x] Implement Settings Logic (Tabs: General, Appearance, Paths)
+    - [x] Implement Library Watcher (`src/hug/services/watcher.py`)
+    - [x] Integrate Watcher into App
+    - [x] Connect Settings to App Configuration
+    - [x] Verify All Features
+    - [x] Update Changelogs
+- [ ] Phase 6: Packaging
+    - [x] Configure PyInstaller (`package/hug.spec`)
+    - [x] Create Build Script (`scripts/build.py`)
+    - [x] Verify Build (Run Executable)
+    - [x] Create Release Archive
+    - [x] Finalize Documentation
+    - [x] Update Changelogs

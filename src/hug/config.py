@@ -71,6 +71,11 @@ class Config:
             def load_nested(config_cls, data_dict):
                 return config_cls(**{k: v for k, v in data_dict.items() if k in config_cls.__annotations__})
 
+            # Use defaults if library_paths is empty or not present
+            library_paths = data.get("library_paths", [])
+            if not library_paths:
+                library_paths = cls.get_default_library_paths()
+
             return cls(
                 version=data.get("version", "1.0"),
                 hotkey=load_nested(HotkeyConfig, data.get("hotkey", {})),
@@ -78,7 +83,7 @@ class Config:
                 clipboard=load_nested(ClipboardConfig, data.get("clipboard", {})),
                 appearance=load_nested(AppearanceConfig, data.get("appearance", {})),
                 startup=load_nested(StartupConfig, data.get("startup", {})),
-                library_paths=data.get("library_paths", cls.get_default_library_paths()),
+                library_paths=library_paths,
             )
         except Exception as e:
             logger.error(f"Failed to load config from {path}: {e}")
@@ -108,7 +113,8 @@ class Config:
     def get_default_library_paths() -> list[str]:
         """Return default snippet library paths."""
         # For development/portable use, look relative to executable/script
-        base_dir = Path(__file__).resolve().parent.parent.parent.parent
+        # config.py is at src/hug/config.py, so go up 3 levels to reach project root
+        base_dir = Path(__file__).resolve().parent.parent.parent
         snippets_dir = base_dir / "snippets"
         if snippets_dir.exists():
             return [str(snippets_dir)]

@@ -2,7 +2,8 @@
 from typing import cast
 
 from PySide6.QtCore import Qt, Signal
-from PySide6.QtWidgets import QTreeWidget, QTreeWidgetItem, QTreeWidgetItemIterator
+from PySide6.QtGui import QAction
+from PySide6.QtWidgets import QTreeWidget, QTreeWidgetItem, QTreeWidgetItemIterator, QMenu
 
 from hug.models.library import LibraryManager, SnippetLibrary
 from hug.models.snippet import Snippet
@@ -38,18 +39,40 @@ class LibraryItem(QTreeWidgetItem):
 
 class SnippetTree(QTreeWidget):
     snippet_selected = Signal(Snippet)
-    preview_snippet = Signal(object) # object can be Snippet or None
-    
+    preview_snippet = Signal(object)  # object can be Snippet or None
+    edit_snippet = Signal(Snippet)  # Request to edit a snippet
+    delete_snippet = Signal(Snippet)  # Request to delete a snippet
+
     def __init__(self, library_manager: LibraryManager, parent=None):
         super().__init__(parent)
         self.library_manager = library_manager
         self.setHeaderHidden(True)
         self._setup_ui()
-        
+
     def _setup_ui(self) -> None:
         """Configure tree behavior."""
         self.itemActivated.connect(self._on_item_activated)
         self.currentItemChanged.connect(self._on_current_changed)
+        self.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.customContextMenuRequested.connect(self._show_context_menu)
+
+    def _show_context_menu(self, position) -> None:
+        """Show context menu for snippet items."""
+        item = self.itemAt(position)
+        if not isinstance(item, SnippetItem):
+            return
+
+        menu = QMenu(self)
+
+        edit_action = QAction("Edit Snippet", self)
+        edit_action.triggered.connect(lambda: self.edit_snippet.emit(item.snippet))
+        menu.addAction(edit_action)
+
+        delete_action = QAction("Delete Snippet", self)
+        delete_action.triggered.connect(lambda: self.delete_snippet.emit(item.snippet))
+        menu.addAction(delete_action)
+
+        menu.exec(self.mapToGlobal(position))
         
     def refresh(self) -> None:
         """Rebuild tree from libraries."""

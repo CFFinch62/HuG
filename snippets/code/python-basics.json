@@ -1,0 +1,367 @@
+{
+  "name": "Python Basics",
+  "description": "Common Python code templates and patterns",
+  "snippets": [
+    {
+      "id": "py_for_loop",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "Basic for loop iteration",
+      "tags": ["loop", "iteration"],
+      "content": "for item in items:\n    pass"
+    },
+    {
+      "id": "py_for_range",
+      "name": "For Loop (range)",
+      "category": "Loops",
+      "description": "For loop with range",
+      "tags": ["loop", "iteration", "range"],
+      "content": "for i in range(n):\n    pass"
+    },
+    {
+      "id": "py_for_enumerate",
+      "name": "For Loop (enumerate)",
+      "category": "Loops",
+      "description": "For loop with index using enumerate",
+      "tags": ["loop", "iteration", "enumerate"],
+      "content": "for i, item in enumerate(items):\n    pass"
+    },
+    {
+      "id": "py_while_loop",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "Basic while loop",
+      "tags": ["loop", "iteration"],
+      "content": "while condition:\n    pass"
+    },
+    {
+      "id": "py_function",
+      "name": "Function Definition",
+      "category": "Functions",
+      "description": "Basic function definition",
+      "tags": ["function", "def"],
+      "content": "def function_name(param1, param2):\n    \"\"\"Description of function.\"\"\"\n    pass"
+    },
+    {
+      "id": "py_function_typed",
+      "name": "Function (with type hints)",
+      "category": "Functions",
+      "description": "Function with type annotations",
+      "tags": ["function", "def", "typing"],
+      "content": "def function_name(param1: str, param2: int) -> bool:\n    \"\"\"Description of function.\"\"\"\n    return True"
+    },
+    {
+      "id": "py_try_except",
+      "name": "Try/Except",
+      "category": "Error Handling",
+      "description": "Basic try/except block",
+      "tags": ["exception", "error"],
+      "content": "try:\n    pass\nexcept Exception as e:\n    print(f\"Error: {e}\")"
+    },
+    {
+      "id": "py_try_except_finally",
+      "name": "Try/Except/Finally",
+      "category": "Error Handling",
+      "description": "Try block with finally clause",
+      "tags": ["exception", "error", "finally"],
+      "content": "try:\n    pass\nexcept Exception as e:\n    print(f\"Error: {e}\")\nfinally:\n    # Cleanup code\n    pass"
+    },
+    {
+      "id": "py_class",
+      "name": "Class Definition",
+      "category": "Classes",
+      "description": "Basic class with __init__",
+      "tags": ["class", "oop"],
+      "content": "class ClassName:\n    \"\"\"Description of class.\"\"\"\n    \n    def __init__(self, param1):\n        self.param1 = param1\n    \n    def method(self):\n        pass"
+    },
+    {
+      "id": "py_dataclass",
+      "name": "Dataclass",
+      "category": "Classes",
+      "description": "Python dataclass definition",
+      "tags": ["class", "dataclass"],
+      "content": "from dataclasses import dataclass\n\n@dataclass\nclass ClassName:\n    \"\"\"Description of dataclass.\"\"\"\n    field1: str\n    field2: int = 0"
+    },
+    {
+      "id": "py_if_else",
+      "name": "If/Elif/Else",
+      "category": "Conditionals",
+      "description": "Conditional branching",
+      "tags": ["if", "conditional"],
+      "content": "if condition:\n    pass\nelif other_condition:\n    pass\nelse:\n    pass"
+    },
+    {
+      "id": "py_with",
+      "name": "With Statement",
+      "category": "Context Managers",
+      "description": "Context manager (with statement)",
+      "tags": ["context", "with", "file"],
+      "content": "with open(\"filename.txt\", \"r\") as f:\n    content = f.read()"
+    },
+    {
+      "id": "py_list_comp",
+      "name": "List Comprehension",
+      "category": "Comprehensions",
+      "description": "Create list with comprehension",
+      "tags": ["list", "comprehension"],
+      "content": "[x for x in items if condition]"
+    },
+    {
+      "id": "py_dict_comp",
+      "name": "Dictionary Comprehension",
+      "category": "Comprehensions",
+      "description": "Create dictionary with comprehension",
+      "tags": ["dict", "comprehension"],
+      "content": "{key: value for key, value in items.items()}"
+    },
+    {
+      "id": "py_lambda",
+      "name": "Lambda Function",
+      "category": "Functions",
+      "description": "Anonymous function",
+      "tags": ["lambda", "function"],
+      "content": "lambda x: x * 2"
+    },
+    {
+      "id": "py_main",
+      "name": "Main Block",
+      "category": "Structure",
+      "description": "Script entry point",
+      "tags": ["main", "entry"],
+      "content": "if __name__ == \"__main__\":\n    main()"
+    },
+    {
+      "id": "py_argparse",
+      "name": "Argparse Setup",
+      "category": "CLI",
+      "description": "Command line argument parsing",
+      "tags": ["cli", "argparse", "arguments"],
+      "content": "import argparse\n\nparser = argparse.ArgumentParser(description=\"Description\")\nparser.add_argument(\"--name\", type=str, help=\"Help text\")\nargs = parser.parse_args()"
+    },
+    {
+      "id": "py_logging",
+      "name": "Logging Setup",
+      "category": "Logging",
+      "description": "Basic logging configuration",
+      "tags": ["logging", "debug"],
+      "content": "import logging\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)"
+    },
+    {
+      "id": "py_async_def",
+      "name": "Async Function",
+      "category": "Async",
+      "description": "Async function definition",
+      "tags": ["async", "await", "coroutine"],
+      "content": "async def async_function():\n    \"\"\"Async function.\"\"\"\n    result = await some_coroutine()\n    return result"
+    },
+    {
+      "id": "py_async_gather",
+      "name": "Async Gather",
+      "category": "Async",
+      "description": "Run multiple coroutines concurrently",
+      "tags": ["async", "await", "gather"],
+      "content": "import asyncio\n\nresults = await asyncio.gather(\n    coroutine1(),\n    coroutine2(),\n    coroutine3(),\n)"
+    },
+    {
+      "id": "py_async_main",
+      "name": "Async Main",
+      "category": "Async",
+      "description": "Async entry point pattern",
+      "tags": ["async", "main"],
+      "content": "import asyncio\n\nasync def main():\n    pass\n\nif __name__ == \"__main__\":\n    asyncio.run(main())"
+    },
+    {
+      "id": "py_decorator",
+      "name": "Decorator",
+      "category": "Decorators",
+      "description": "Basic decorator pattern",
+      "tags": ["decorator", "wrapper"],
+      "content": "from functools import wraps\n\ndef my_decorator(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        # Before\n        result = func(*args, **kwargs)\n        # After\n        return result\n    return wrapper"
+    },
+    {
+      "id": "py_decorator_args",
+      "name": "Decorator (with arguments)",
+      "category": "Decorators",
+      "description": "Decorator that accepts arguments",
+      "tags": ["decorator", "wrapper"],
+      "content": "from functools import wraps\n\ndef my_decorator(arg1, arg2):\n    def decorator(func):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            return func(*args, **kwargs)\n        return wrapper\n    return decorator"
+    },
+    {
+      "id": "py_generator",
+      "name": "Generator Function",
+      "category": "Generators",
+      "description": "Generator with yield",
+      "tags": ["generator", "yield", "iterator"],
+      "content": "def my_generator(items):\n    \"\"\"Generate items one at a time.\"\"\"\n    for item in items:\n        yield item"
+    },
+    {
+      "id": "py_generator_expr",
+      "name": "Generator Expression",
+      "category": "Generators",
+      "description": "Inline generator expression",
+      "tags": ["generator", "expression"],
+      "content": "(x for x in items if condition)"
+    },
+    {
+      "id": "py_property",
+      "name": "Property",
+      "category": "Classes",
+      "description": "Property with getter and setter",
+      "tags": ["property", "getter", "setter"],
+      "content": "@property\ndef name(self):\n    \"\"\"Get the name.\"\"\"\n    return self._name\n\n@name.setter\ndef name(self, value):\n    self._name = value"
+    },
+    {
+      "id": "py_staticmethod",
+      "name": "Static Method",
+      "category": "Classes",
+      "description": "Static method decorator",
+      "tags": ["static", "method"],
+      "content": "@staticmethod\ndef static_method(param):\n    \"\"\"Static method - no self parameter.\"\"\"\n    return param"
+    },
+    {
+      "id": "py_classmethod",
+      "name": "Class Method",
+      "category": "Classes",
+      "description": "Class method decorator",
+      "tags": ["class", "method"],
+      "content": "@classmethod\ndef from_string(cls, string):\n    \"\"\"Alternative constructor.\"\"\"\n    return cls(string)"
+    },
+    {
+      "id": "py_context_manager",
+      "name": "Context Manager Class",
+      "category": "Context Managers",
+      "description": "Custom context manager using class",
+      "tags": ["context", "with", "enter", "exit"],
+      "content": "class MyContextManager:\n    def __enter__(self):\n        # Setup\n        return self\n    \n    def __exit__(self, exc_type, exc_val, exc_tb):\n        # Cleanup\n        return False"
+    },
+    {
+      "id": "py_contextlib",
+      "name": "Context Manager (contextlib)",
+      "category": "Context Managers",
+      "description": "Context manager using contextlib",
+      "tags": ["context", "contextlib", "yield"],
+      "content": "from contextlib import contextmanager\n\n@contextmanager\ndef my_context():\n    # Setup\n    try:\n        yield resource\n    finally:\n        # Cleanup\n        pass"
+    },
+    {
+      "id": "py_namedtuple",
+      "name": "Named Tuple",
+      "category": "Data Structures",
+      "description": "Immutable named tuple",
+      "tags": ["namedtuple", "tuple"],
+      "content": "from collections import namedtuple\n\nPoint = namedtuple('Point', ['x', 'y'])"
+    },
+    {
+      "id": "py_defaultdict",
+      "name": "Default Dict",
+      "category": "Data Structures",
+      "description": "Dictionary with default values",
+      "tags": ["dict", "defaultdict"],
+      "content": "from collections import defaultdict\n\ncounts = defaultdict(int)\ncounts[key] += 1"
+    },
+    {
+      "id": "py_counter",
+      "name": "Counter",
+      "category": "Data Structures",
+      "description": "Count occurrences",
+      "tags": ["counter", "count"],
+      "content": "from collections import Counter\n\ncounts = Counter(items)\nmost_common = counts.most_common(10)"
+    },
+    {
+      "id": "py_pathlib",
+      "name": "Path Operations",
+      "category": "Files",
+      "description": "Modern path handling with pathlib",
+      "tags": ["path", "file", "pathlib"],
+      "content": "from pathlib import Path\n\npath = Path(\"directory\") / \"filename.txt\"\nif path.exists():\n    content = path.read_text()"
+    },
+    {
+      "id": "py_json_load",
+      "name": "JSON Load",
+      "category": "Files",
+      "description": "Load JSON from file",
+      "tags": ["json", "file", "load"],
+      "content": "import json\n\nwith open(\"data.json\", \"r\") as f:\n    data = json.load(f)"
+    },
+    {
+      "id": "py_json_dump",
+      "name": "JSON Dump",
+      "category": "Files",
+      "description": "Write JSON to file",
+      "tags": ["json", "file", "save"],
+      "content": "import json\n\nwith open(\"data.json\", \"w\") as f:\n    json.dump(data, f, indent=2)"
+    },
+    {
+      "id": "py_requests",
+      "name": "HTTP Request",
+      "category": "Network",
+      "description": "Make HTTP request with requests",
+      "tags": ["http", "requests", "api"],
+      "content": "import requests\n\nresponse = requests.get(url)\nif response.ok:\n    data = response.json()"
+    },
+    {
+      "id": "py_unittest",
+      "name": "Unit Test Class",
+      "category": "Testing",
+      "description": "Basic unittest test case",
+      "tags": ["test", "unittest"],
+      "content": "import unittest\n\nclass TestMyClass(unittest.TestCase):\n    def setUp(self):\n        pass\n    \n    def test_something(self):\n        self.assertEqual(expected, actual)"
+    },
+    {
+      "id": "py_pytest",
+      "name": "Pytest Function",
+      "category": "Testing",
+      "description": "Simple pytest test function",
+      "tags": ["test", "pytest"],
+      "content": "import pytest\n\ndef test_something():\n    assert result == expected\n\n@pytest.fixture\ndef my_fixture():\n    return setup_data"
+    },
+    {
+      "id": "py_enum",
+      "name": "Enum",
+      "category": "Data Structures",
+      "description": "Enumeration definition",
+      "tags": ["enum", "constant"],
+      "content": "from enum import Enum, auto\n\nclass Color(Enum):\n    RED = auto()\n    GREEN = auto()\n    BLUE = auto()"
+    },
+    {
+      "id": "py_abc",
+      "name": "Abstract Base Class",
+      "category": "Classes",
+      "description": "Abstract class with abstract methods",
+      "tags": ["abstract", "abc", "interface"],
+      "content": "from abc import ABC, abstractmethod\n\nclass MyInterface(ABC):\n    @abstractmethod\n    def my_method(self):\n        \"\"\"Must be implemented by subclasses.\"\"\"\n        pass"
+    },
+    {
+      "id": "py_type_alias",
+      "name": "Type Alias",
+      "category": "Typing",
+      "description": "Type alias definition",
+      "tags": ["type", "typing", "alias"],
+      "content": "from typing import TypeAlias\n\nUserId: TypeAlias = int\nUserDict: TypeAlias = dict[str, Any]"
+    },
+    {
+      "id": "py_protocol",
+      "name": "Protocol",
+      "category": "Typing",
+      "description": "Structural subtyping protocol",
+      "tags": ["protocol", "typing", "interface"],
+      "content": "from typing import Protocol\n\nclass Readable(Protocol):\n    def read(self) -> str:\n        ..."
+    },
+    {
+      "id": "py_match",
+      "name": "Match Statement",
+      "category": "Conditionals",
+      "description": "Pattern matching (Python 3.10+)",
+      "tags": ["match", "pattern", "switch"],
+      "content": "match command:\n    case \"start\":\n        start()\n    case \"stop\":\n        stop()\n    case _:\n        unknown()"
+    },
+    {
+      "id": "py_walrus",
+      "name": "Walrus Operator",
+      "category": "Expressions",
+      "description": "Assignment expression",
+      "tags": ["walrus", "assignment"],
+      "content": "if (n := len(data)) > 10:\n    print(f\"List has {n} items\")"
+    }
+  ]
+}
+

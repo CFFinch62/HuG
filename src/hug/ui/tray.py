@@ -15,11 +15,13 @@ logger = logging.getLogger(__name__)
 class SystemTray(QSystemTrayIcon):
     snippet_selected = Signal(Snippet)
     quit_requested = Signal()
-    
+    settings_requested = Signal()
+    menu_about_to_show = Signal()  # Emitted before menu is shown
+
     def __init__(self, library_manager: LibraryManager, icon_path: str, parent=None):
         super().__init__(parent)
         self.library_manager = library_manager
-        
+
         # Set icon
         icon = QIcon(icon_path)
         if icon.isNull():
@@ -27,26 +29,37 @@ class SystemTray(QSystemTrayIcon):
             # Fallback or empty icon
         self.setIcon(icon)
         self.setToolTip("HuG Snippet Manager")
-        
+
         # Build menu
         self.menu = QMenu()
         self._build_menu()
         self.setContextMenu(self.menu)
-        
+
+        # Connect menu aboutToShow signal
+        self.menu.aboutToShow.connect(self._on_menu_about_to_show)
+
         self.show()
+
+    def _on_menu_about_to_show(self) -> None:
+        """Handle menu about to be shown."""
+        self.menu_about_to_show.emit()
         
     def _build_menu(self) -> None:
         """Build context menu from current libraries."""
         self.menu.clear()
-        
+
         # 1. Libraries
         for lib_name, library in self.library_manager.libraries.items():
             lib_menu = self.menu.addMenu(lib_name)
             self._populate_library_menu(lib_menu, library)
-            
+
         self.menu.addSeparator()
-        
-        # 2. Application Actions
+
+        # 2. Settings action - connect to signal so it survives rebuild
+        settings_action = self.menu.addAction("Settings")
+        settings_action.triggered.connect(self.settings_requested.emit)
+
+        # 3. Quit action
         quit_action = self.menu.addAction("Quit")
         quit_action.triggered.connect(self.quit_requested.emit)
         

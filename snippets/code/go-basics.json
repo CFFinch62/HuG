@@ -1,0 +1,167 @@
+{
+  "name": "Go Basics",
+  "description": "Common Go code templates and patterns",
+  "snippets": [
+    {
+      "id": "go_for",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "Traditional for loop",
+      "tags": ["loop", "iteration"],
+      "content": "for i := 0; i < n; i++ {\n    \n}"
+    },
+    {
+      "id": "go_for_range",
+      "name": "For Range",
+      "category": "Loops",
+      "description": "Range over slice/map",
+      "tags": ["loop", "range"],
+      "content": "for i, item := range items {\n    \n}"
+    },
+    {
+      "id": "go_for_infinite",
+      "name": "For (infinite)",
+      "category": "Loops",
+      "description": "Infinite loop",
+      "tags": ["loop"],
+      "content": "for {\n    \n}"
+    },
+    {
+      "id": "go_function",
+      "name": "Function",
+      "category": "Functions",
+      "description": "Function definition",
+      "tags": ["function"],
+      "content": "func functionName(param string) (string, error) {\n    return result, nil\n}"
+    },
+    {
+      "id": "go_method",
+      "name": "Method",
+      "category": "Functions",
+      "description": "Method on struct",
+      "tags": ["method", "receiver"],
+      "content": "func (s *StructName) MethodName() string {\n    return s.field\n}"
+    },
+    {
+      "id": "go_error_check",
+      "name": "Error Check",
+      "category": "Error Handling",
+      "description": "Standard error handling",
+      "tags": ["error"],
+      "content": "if err != nil {\n    return fmt.Errorf(\"failed: %w\", err)\n}"
+    },
+    {
+      "id": "go_defer",
+      "name": "Defer",
+      "category": "Control Flow",
+      "description": "Deferred execution",
+      "tags": ["defer", "cleanup"],
+      "content": "defer func() {\n    // Cleanup\n}()"
+    },
+    {
+      "id": "go_struct",
+      "name": "Struct",
+      "category": "Types",
+      "description": "Struct definition",
+      "tags": ["struct", "type"],
+      "content": "type StructName struct {\n    Field1 string `json:\"field1\"`\n    Field2 int    `json:\"field2\"`\n}"
+    },
+    {
+      "id": "go_interface",
+      "name": "Interface",
+      "category": "Types",
+      "description": "Interface definition",
+      "tags": ["interface", "type"],
+      "content": "type InterfaceName interface {\n    Method() error\n}"
+    },
+    {
+      "id": "go_if_else",
+      "name": "If/Else",
+      "category": "Conditionals",
+      "description": "Conditional statement",
+      "tags": ["if", "conditional"],
+      "content": "if condition {\n    \n} else if otherCondition {\n    \n} else {\n    \n}"
+    },
+    {
+      "id": "go_if_init",
+      "name": "If with Init",
+      "category": "Conditionals",
+      "description": "If with initialization",
+      "tags": ["if", "init"],
+      "content": "if val, ok := someMap[key]; ok {\n    \n}"
+    },
+    {
+      "id": "go_switch",
+      "name": "Switch",
+      "category": "Conditionals",
+      "description": "Switch statement",
+      "tags": ["switch", "case"],
+      "content": "switch value {\ncase \"a\":\n    \ncase \"b\":\n    \ndefault:\n    \n}"
+    },
+    {
+      "id": "go_type_switch",
+      "name": "Type Switch",
+      "category": "Conditionals",
+      "description": "Switch on type",
+      "tags": ["switch", "type"],
+      "content": "switch v := value.(type) {\ncase string:\n    fmt.Println(v)\ncase int:\n    fmt.Println(v)\ndefault:\n    fmt.Println(\"unknown\")\n}"
+    },
+    {
+      "id": "go_goroutine",
+      "name": "Goroutine",
+      "category": "Concurrency",
+      "description": "Start goroutine",
+      "tags": ["goroutine", "concurrent"],
+      "content": "go func() {\n    \n}()"
+    },
+    {
+      "id": "go_channel",
+      "name": "Channel",
+      "category": "Concurrency",
+      "description": "Create and use channel",
+      "tags": ["channel", "concurrent"],
+      "content": "ch := make(chan string)\n\ngo func() {\n    ch <- \"message\"\n}()\n\nmsg := <-ch"
+    },
+    {
+      "id": "go_select",
+      "name": "Select",
+      "category": "Concurrency",
+      "description": "Select on channels",
+      "tags": ["select", "channel"],
+      "content": "select {\ncase msg := <-ch1:\n    fmt.Println(msg)\ncase msg := <-ch2:\n    fmt.Println(msg)\ncase <-time.After(time.Second):\n    fmt.Println(\"timeout\")\n}"
+    },
+    {
+      "id": "go_main",
+      "name": "Main Package",
+      "category": "Structure",
+      "description": "Main entry point",
+      "tags": ["main", "entry"],
+      "content": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello\")\n}"
+    },
+    {
+      "id": "go_test",
+      "name": "Test Function",
+      "category": "Testing",
+      "description": "Test function",
+      "tags": ["test", "testing"],
+      "content": "func TestFunctionName(t *testing.T) {\n    got := FunctionName()\n    want := expected\n    if got != want {\n        t.Errorf(\"got %v, want %v\", got, want)\n    }\n}"
+    },
+    {
+      "id": "go_json_marshal",
+      "name": "JSON Marshal",
+      "category": "Encoding",
+      "description": "Encode to JSON",
+      "tags": ["json", "marshal"],
+      "content": "data, err := json.Marshal(value)\nif err != nil {\n    return err\n}"
+    },
+    {
+      "id": "go_json_unmarshal",
+      "name": "JSON Unmarshal",
+      "category": "Encoding",
+      "description": "Decode from JSON",
+      "tags": ["json", "unmarshal"],
+      "content": "var result StructName\nif err := json.Unmarshal(data, &result); err != nil {\n    return err\n}"
+    }
+  ]
+}
+

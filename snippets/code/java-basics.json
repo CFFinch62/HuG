@@ -1,0 +1,167 @@
+{
+  "name": "Java Basics",
+  "description": "Common Java code templates and patterns",
+  "snippets": [
+    {
+      "id": "java_for",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "Traditional for loop",
+      "tags": ["loop", "iteration"],
+      "content": "for (int i = 0; i < n; i++) {\n    \n}"
+    },
+    {
+      "id": "java_foreach",
+      "name": "For-Each Loop",
+      "category": "Loops",
+      "description": "Enhanced for loop",
+      "tags": ["loop", "iteration"],
+      "content": "for (Type item : items) {\n    \n}"
+    },
+    {
+      "id": "java_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "While loop",
+      "tags": ["loop", "iteration"],
+      "content": "while (condition) {\n    \n}"
+    },
+    {
+      "id": "java_method",
+      "name": "Method",
+      "category": "Methods",
+      "description": "Method definition",
+      "tags": ["method", "function"],
+      "content": "public ReturnType methodName(Type param) {\n    return result;\n}"
+    },
+    {
+      "id": "java_method_static",
+      "name": "Static Method",
+      "category": "Methods",
+      "description": "Static method definition",
+      "tags": ["method", "static"],
+      "content": "public static ReturnType methodName(Type param) {\n    return result;\n}"
+    },
+    {
+      "id": "java_try_catch",
+      "name": "Try/Catch",
+      "category": "Error Handling",
+      "description": "Try catch block",
+      "tags": ["exception", "error"],
+      "content": "try {\n    \n} catch (Exception e) {\n    e.printStackTrace();\n}"
+    },
+    {
+      "id": "java_try_resources",
+      "name": "Try-with-Resources",
+      "category": "Error Handling",
+      "description": "Auto-closeable resources",
+      "tags": ["exception", "resources"],
+      "content": "try (Resource resource = new Resource()) {\n    \n} catch (Exception e) {\n    e.printStackTrace();\n}"
+    },
+    {
+      "id": "java_class",
+      "name": "Class",
+      "category": "Classes",
+      "description": "Class definition",
+      "tags": ["class", "oop"],
+      "content": "public class ClassName {\n    private String field;\n    \n    public ClassName(String field) {\n        this.field = field;\n    }\n    \n    public String getField() {\n        return field;\n    }\n}"
+    },
+    {
+      "id": "java_interface",
+      "name": "Interface",
+      "category": "Classes",
+      "description": "Interface definition",
+      "tags": ["interface", "oop"],
+      "content": "public interface InterfaceName {\n    void method();\n    \n    default void defaultMethod() {\n        \n    }\n}"
+    },
+    {
+      "id": "java_enum",
+      "name": "Enum",
+      "category": "Types",
+      "description": "Enum definition",
+      "tags": ["enum", "constant"],
+      "content": "public enum Status {\n    PENDING,\n    SUCCESS,\n    ERROR\n}"
+    },
+    {
+      "id": "java_record",
+      "name": "Record",
+      "category": "Types",
+      "description": "Record class (Java 16+)",
+      "tags": ["record", "immutable"],
+      "content": "public record Person(String name, int age) {\n}"
+    },
+    {
+      "id": "java_if_else",
+      "name": "If/Else",
+      "category": "Conditionals",
+      "description": "Conditional statement",
+      "tags": ["if", "conditional"],
+      "content": "if (condition) {\n    \n} else if (otherCondition) {\n    \n} else {\n    \n}"
+    },
+    {
+      "id": "java_switch",
+      "name": "Switch",
+      "category": "Conditionals",
+      "description": "Switch statement",
+      "tags": ["switch", "case"],
+      "content": "switch (value) {\n    case \"a\":\n        break;\n    case \"b\":\n        break;\n    default:\n        break;\n}"
+    },
+    {
+      "id": "java_switch_expr",
+      "name": "Switch Expression",
+      "category": "Conditionals",
+      "description": "Switch expression (Java 14+)",
+      "tags": ["switch", "expression"],
+      "content": "String result = switch (value) {\n    case \"a\" -> \"Alpha\";\n    case \"b\" -> \"Beta\";\n    default -> \"Unknown\";\n};"
+    },
+    {
+      "id": "java_main",
+      "name": "Main Method",
+      "category": "Structure",
+      "description": "Entry point",
+      "tags": ["main", "entry"],
+      "content": "public static void main(String[] args) {\n    \n}"
+    },
+    {
+      "id": "java_lambda",
+      "name": "Lambda",
+      "category": "Functions",
+      "description": "Lambda expression",
+      "tags": ["lambda", "functional"],
+      "content": "(param) -> {\n    return result;\n}"
+    },
+    {
+      "id": "java_stream",
+      "name": "Stream Pipeline",
+      "category": "Streams",
+      "description": "Stream operations",
+      "tags": ["stream", "functional"],
+      "content": "list.stream()\n    .filter(item -> condition)\n    .map(item -> transform)\n    .collect(Collectors.toList());"
+    },
+    {
+      "id": "java_optional",
+      "name": "Optional",
+      "category": "Types",
+      "description": "Optional handling",
+      "tags": ["optional", "null"],
+      "content": "Optional<String> opt = Optional.ofNullable(value);\nString result = opt.orElse(\"default\");"
+    },
+    {
+      "id": "java_list",
+      "name": "List Creation",
+      "category": "Collections",
+      "description": "Create list",
+      "tags": ["list", "collection"],
+      "content": "List<String> list = new ArrayList<>();\nList<String> immutable = List.of(\"a\", \"b\", \"c\");"
+    },
+    {
+      "id": "java_map",
+      "name": "Map Creation",
+      "category": "Collections",
+      "description": "Create map",
+      "tags": ["map", "collection"],
+      "content": "Map<String, Integer> map = new HashMap<>();\nmap.put(\"key\", value);\nInteger val = map.get(\"key\");"
+    }
+  ]
+}
+

@@ -1,0 +1,151 @@
+{
+  "name": "Bash Basics",
+  "description": "Common Bash/Shell script templates",
+  "snippets": [
+    {
+      "id": "bash_shebang",
+      "name": "Shebang",
+      "category": "Structure",
+      "description": "Script header",
+      "tags": ["shebang", "header"],
+      "content": "#!/bin/bash\nset -euo pipefail"
+    },
+    {
+      "id": "bash_for",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "For loop over items",
+      "tags": ["loop", "iteration"],
+      "content": "for item in \"${items[@]}\"; do\n    echo \"$item\"\ndone"
+    },
+    {
+      "id": "bash_for_range",
+      "name": "For Loop (range)",
+      "category": "Loops",
+      "description": "For loop with range",
+      "tags": ["loop", "range"],
+      "content": "for i in {1..10}; do\n    echo \"$i\"\ndone"
+    },
+    {
+      "id": "bash_for_c",
+      "name": "For Loop (C-style)",
+      "category": "Loops",
+      "description": "C-style for loop",
+      "tags": ["loop"],
+      "content": "for ((i = 0; i < n; i++)); do\n    echo \"$i\"\ndone"
+    },
+    {
+      "id": "bash_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "While loop",
+      "tags": ["loop"],
+      "content": "while [ condition ]; do\n    \ndone"
+    },
+    {
+      "id": "bash_while_read",
+      "name": "While Read Lines",
+      "category": "Loops",
+      "description": "Read file line by line",
+      "tags": ["loop", "file", "read"],
+      "content": "while IFS= read -r line; do\n    echo \"$line\"\ndone < \"$filename\""
+    },
+    {
+      "id": "bash_function",
+      "name": "Function",
+      "category": "Functions",
+      "description": "Function definition",
+      "tags": ["function"],
+      "content": "function_name() {\n    local param1=\"$1\"\n    local param2=\"$2\"\n    \n    echo \"$param1\"\n}"
+    },
+    {
+      "id": "bash_if",
+      "name": "If/Else",
+      "category": "Conditionals",
+      "description": "Conditional statement",
+      "tags": ["if", "conditional"],
+      "content": "if [ condition ]; then\n    \nelif [ other_condition ]; then\n    \nelse\n    \nfi"
+    },
+    {
+      "id": "bash_if_file",
+      "name": "If File Exists",
+      "category": "Conditionals",
+      "description": "Check if file exists",
+      "tags": ["if", "file"],
+      "content": "if [ -f \"$filename\" ]; then\n    echo \"File exists\"\nfi"
+    },
+    {
+      "id": "bash_if_dir",
+      "name": "If Directory Exists",
+      "category": "Conditionals",
+      "description": "Check if directory exists",
+      "tags": ["if", "directory"],
+      "content": "if [ -d \"$dirname\" ]; then\n    echo \"Directory exists\"\nfi"
+    },
+    {
+      "id": "bash_if_string",
+      "name": "If String",
+      "category": "Conditionals",
+      "description": "String comparisons",
+      "tags": ["if", "string"],
+      "content": "if [ -z \"$var\" ]; then\n    echo \"Empty\"\nfi\n\nif [ -n \"$var\" ]; then\n    echo \"Not empty\"\nfi\n\nif [ \"$a\" = \"$b\" ]; then\n    echo \"Equal\"\nfi"
+    },
+    {
+      "id": "bash_case",
+      "name": "Case Statement",
+      "category": "Conditionals",
+      "description": "Case/switch statement",
+      "tags": ["case", "switch"],
+      "content": "case \"$value\" in\n    pattern1)\n        ;;\n    pattern2)\n        ;;\n    *)\n        ;;\nesac"
+    },
+    {
+      "id": "bash_array",
+      "name": "Array",
+      "category": "Variables",
+      "description": "Array operations",
+      "tags": ["array"],
+      "content": "arr=(\"item1\" \"item2\" \"item3\")\necho \"${arr[0]}\"       # First element\necho \"${arr[@]}\"       # All elements\necho \"${#arr[@]}\"      # Length"
+    },
+    {
+      "id": "bash_params",
+      "name": "Script Parameters",
+      "category": "Variables",
+      "description": "Handle script arguments",
+      "tags": ["params", "args"],
+      "content": "# $0 = script name\n# $1, $2 = arguments\n# $# = number of arguments\n# $@ = all arguments\n\nif [ $# -lt 1 ]; then\n    echo \"Usage: $0 <arg>\"\n    exit 1\nfi"
+    },
+    {
+      "id": "bash_redirect",
+      "name": "Redirection",
+      "category": "I/O",
+      "description": "Output redirection",
+      "tags": ["redirect", "io"],
+      "content": "command > output.txt      # Overwrite\ncommand >> output.txt     # Append\ncommand 2>&1              # Stderr to stdout\ncommand &> output.txt     # Both to file"
+    },
+    {
+      "id": "bash_trap",
+      "name": "Trap",
+      "category": "Signals",
+      "description": "Handle signals/cleanup",
+      "tags": ["trap", "signal", "cleanup"],
+      "content": "cleanup() {\n    echo \"Cleaning up...\"\n}\ntrap cleanup EXIT"
+    },
+    {
+      "id": "bash_command_sub",
+      "name": "Command Substitution",
+      "category": "Variables",
+      "description": "Capture command output",
+      "tags": ["command", "substitution"],
+      "content": "result=$(command)\ntoday=$(date +%Y-%m-%d)"
+    },
+    {
+      "id": "bash_check_command",
+      "name": "Check Command Exists",
+      "category": "Conditionals",
+      "description": "Check if command exists",
+      "tags": ["command", "check"],
+      "content": "if ! command -v docker &> /dev/null; then\n    echo \"docker not found\"\n    exit 1\nfi"
+    }
+  ]
+}
+

@@ -4,7 +4,10 @@ from typing import cast
 
 from PySide6.QtCore import Qt, Signal, QEvent, QObject
 from PySide6.QtGui import QKeyEvent, QFocusEvent
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QSplitter
+from PySide6.QtWidgets import (
+    QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QSplitter,
+    QPushButton, QMessageBox
+)
 
 from hug.config import PaletteConfig
 from hug.models.library import LibraryManager
@@ -31,34 +34,55 @@ class FloatingPalette(QWidget):
         """Create layout."""
         layout = QVBoxLayout(self)
         layout.setContentsMargins(10, 10, 10, 10)
-        
+
+        # Search row with buttons
+        search_row = QHBoxLayout()
+
         # Search Box
         self.search_box = QLineEdit()
         self.search_box.setPlaceholderText("Search snippets...")
         self.search_box.textChanged.connect(self._on_search_changed)
-        layout.addWidget(self.search_box)
-        
+        search_row.addWidget(self.search_box)
+
+        # New Snippet button
+        self.new_btn = QPushButton("+")
+        self.new_btn.setToolTip("Create new snippet")
+        self.new_btn.setFixedWidth(30)
+        self.new_btn.clicked.connect(self._on_new_snippet)
+        search_row.addWidget(self.new_btn)
+
+        # Clipboard button
+        self.clipboard_btn = QPushButton("📋")
+        self.clipboard_btn.setToolTip("Create snippet from clipboard")
+        self.clipboard_btn.setFixedWidth(30)
+        self.clipboard_btn.clicked.connect(self._on_new_from_clipboard)
+        search_row.addWidget(self.clipboard_btn)
+
+        layout.addLayout(search_row)
+
         # Splitter for Tree and Preview
         splitter = QSplitter(Qt.Vertical)
-        
+
         # Tree
         self.tree = SnippetTree(self.library_manager)
         self.tree.snippet_selected.connect(self._on_snippet_selected)
         self.tree.preview_snippet.connect(self._on_preview_requested)
+        self.tree.edit_snippet.connect(self._on_edit_snippet)
+        self.tree.delete_snippet.connect(self._on_delete_snippet)
         splitter.addWidget(self.tree)
-        
+
         # Preview
         if self.config.show_preview:
             self.preview = PreviewPane()
             splitter.addWidget(self.preview)
             # Set initial sizes (70% tree, 30% preview)
             splitter.setSizes([int(self.config.height * 0.7), int(self.config.height * 0.3)])
-            
+
         layout.addWidget(splitter)
-        
+
         # Initial data load
         self.refresh()
-        
+
         # Install event filter on search box to handle arrow keys
         self.search_box.installEventFilter(self)
         
@@ -139,5 +163,74 @@ class FloatingPalette(QWidget):
         """Hide on focus loss."""
         if self.config.hide_on_focus_loss:
             self.hide()
+
+    def _on_new_snippet(self) -> None:
+        """Open editor dialog for creating a new snippet."""
+        from hug.ui.snippet_editor import SnippetEditorDialog
+
+        dialog = SnippetEditorDialog(self.library_manager, parent=self)
+        dialog.snippet_saved.connect(self._save_snippet)
+        dialog.exec()
+
+    def _on_new_from_clipboard(self) -> None:
+        """Create a new snippet with content from clipboard."""
+        from PySide6.QtWidgets import QApplication
+        from hug.ui.snippet_editor import SnippetEditorDialog
+
+        clipboard = QApplication.clipboard()
+        content = clipboard.text()
+
+        if not content:
+            QMessageBox.information(
+                self, "Clipboard Empty",
+                "There is no text in the clipboard to create a snippet from."
+            )
+            return
+
+        dialog = SnippetEditorDialog(
+            self.library_manager,
+            initial_content=content,
+            parent=self
+        )
+        dialog.snippet_saved.connect(self._save_snippet)
+        dialog.exec()
+
+    def _on_edit_snippet(self, snippet: Snippet) -> None:
+        """Open editor dialog to edit an existing snippet."""
+        from hug.ui.snippet_editor import SnippetEditorDialog
+
+        dialog = SnippetEditorDialog(self.library_manager, snippet=snippet, parent=self)
+        dialog.snippet_saved.connect(self._save_snippet)
+        dialog.exec()
+
+    def _on_delete_snippet(self, snippet: Snippet) -> None:
+        """Delete a snippet after confirmation."""
+        reply = QMessageBox.question(
+            self, "Delete Snippet",
+            f"Are you sure you want to delete '{snippet.name}'?",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No
+        )
+
+        if reply == QMessageBox.Yes:
+            success = self.library_manager.delete_snippet(snippet.id, snippet.library_name)
+            if success:
+                self.refresh()
+            else:
+                QMessageBox.warning(
+                    self, "Error",
+                    f"Failed to delete snippet '{snippet.name}'."
+                )
+
+    def _save_snippet(self, snippet: Snippet, library_name: str) -> None:
+        """Save snippet to library and refresh the tree."""
+        success = self.library_manager.save_snippet(snippet, library_name)
+        if success:
+            self.refresh()
+        else:
+            QMessageBox.warning(
+                self, "Error",
+                f"Failed to save snippet '{snippet.name}'."
+            )
             self.closed.emit()
         super().focusOutEvent(event)

@@ -71,19 +71,22 @@ class HugApp(QObject):
         """Initialize UI components."""
         icon_path = str(Path(__file__).parent / "resources" / "icons" / "hug.png")
         self.tray = SystemTray(self.library_manager, icon_path)
-        
+
         # Initialize Palette
         self.palette = FloatingPalette(self.library_manager, self.config.palette)
-        
+
         # Connect signals
         self.tray.snippet_selected.connect(self.on_snippet_selected)
         self.tray.quit_requested.connect(self.quit)
-        
-        # Add Settings Action to Tray
-        settings_action = self.tray.menu.addAction("Settings")
-        settings_action.triggered.connect(self.show_settings)
-        
+        self.tray.settings_requested.connect(self.show_settings)
+        self.tray.menu_about_to_show.connect(self._on_tray_menu_about_to_show)
+
         self.palette.snippet_selected.connect(self.on_snippet_selected)
+
+    @Slot()
+    def _on_tray_menu_about_to_show(self) -> None:
+        """Save active window before tray menu steals focus."""
+        self.inserter.save_active_window()
         
     @Slot()
     def on_summon(self) -> None:

@@ -1,0 +1,167 @@
+{
+  "name": "C# Basics",
+  "description": "Common C# code templates and patterns",
+  "snippets": [
+    {
+      "id": "cs_for",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "Traditional for loop",
+      "tags": ["loop", "iteration"],
+      "content": "for (int i = 0; i < n; i++)\n{\n    \n}"
+    },
+    {
+      "id": "cs_foreach",
+      "name": "Foreach Loop",
+      "category": "Loops",
+      "description": "Foreach loop",
+      "tags": ["loop", "iteration"],
+      "content": "foreach (var item in items)\n{\n    \n}"
+    },
+    {
+      "id": "cs_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "While loop",
+      "tags": ["loop", "iteration"],
+      "content": "while (condition)\n{\n    \n}"
+    },
+    {
+      "id": "cs_method",
+      "name": "Method",
+      "category": "Methods",
+      "description": "Method definition",
+      "tags": ["method", "function"],
+      "content": "public ReturnType MethodName(Type param)\n{\n    return result;\n}"
+    },
+    {
+      "id": "cs_async_method",
+      "name": "Async Method",
+      "category": "Async",
+      "description": "Async method definition",
+      "tags": ["async", "await"],
+      "content": "public async Task<ReturnType> MethodNameAsync(Type param)\n{\n    var result = await SomeAsyncOperation();\n    return result;\n}"
+    },
+    {
+      "id": "cs_try_catch",
+      "name": "Try/Catch",
+      "category": "Error Handling",
+      "description": "Try catch block",
+      "tags": ["exception", "error"],
+      "content": "try\n{\n    \n}\ncatch (Exception ex)\n{\n    Console.WriteLine(ex.Message);\n}"
+    },
+    {
+      "id": "cs_using",
+      "name": "Using Statement",
+      "category": "Resources",
+      "description": "Disposable resource handling",
+      "tags": ["using", "dispose"],
+      "content": "using (var resource = new Resource())\n{\n    \n}"
+    },
+    {
+      "id": "cs_using_decl",
+      "name": "Using Declaration",
+      "category": "Resources",
+      "description": "Using declaration (C# 8+)",
+      "tags": ["using", "dispose"],
+      "content": "using var resource = new Resource();"
+    },
+    {
+      "id": "cs_class",
+      "name": "Class",
+      "category": "Classes",
+      "description": "Class definition",
+      "tags": ["class", "oop"],
+      "content": "public class ClassName\n{\n    private string _field;\n    \n    public ClassName(string field)\n    {\n        _field = field;\n    }\n    \n    public string Field => _field;\n}"
+    },
+    {
+      "id": "cs_interface",
+      "name": "Interface",
+      "category": "Classes",
+      "description": "Interface definition",
+      "tags": ["interface", "oop"],
+      "content": "public interface IInterfaceName\n{\n    void Method();\n    string Property { get; }\n}"
+    },
+    {
+      "id": "cs_record",
+      "name": "Record",
+      "category": "Types",
+      "description": "Record definition",
+      "tags": ["record", "immutable"],
+      "content": "public record Person(string Name, int Age);"
+    },
+    {
+      "id": "cs_enum",
+      "name": "Enum",
+      "category": "Types",
+      "description": "Enum definition",
+      "tags": ["enum", "constant"],
+      "content": "public enum Status\n{\n    Pending,\n    Success,\n    Error\n}"
+    },
+    {
+      "id": "cs_property",
+      "name": "Property",
+      "category": "Classes",
+      "description": "Auto-property",
+      "tags": ["property", "getter", "setter"],
+      "content": "public string Name { get; set; }"
+    },
+    {
+      "id": "cs_property_full",
+      "name": "Property (full)",
+      "category": "Classes",
+      "description": "Full property with backing field",
+      "tags": ["property", "getter", "setter"],
+      "content": "private string _name;\npublic string Name\n{\n    get => _name;\n    set => _name = value;\n}"
+    },
+    {
+      "id": "cs_if_else",
+      "name": "If/Else",
+      "category": "Conditionals",
+      "description": "Conditional statement",
+      "tags": ["if", "conditional"],
+      "content": "if (condition)\n{\n    \n}\nelse if (otherCondition)\n{\n    \n}\nelse\n{\n    \n}"
+    },
+    {
+      "id": "cs_switch",
+      "name": "Switch",
+      "category": "Conditionals",
+      "description": "Switch statement",
+      "tags": ["switch", "case"],
+      "content": "switch (value)\n{\n    case \"a\":\n        break;\n    case \"b\":\n        break;\n    default:\n        break;\n}"
+    },
+    {
+      "id": "cs_switch_expr",
+      "name": "Switch Expression",
+      "category": "Conditionals",
+      "description": "Switch expression (C# 8+)",
+      "tags": ["switch", "expression"],
+      "content": "var result = value switch\n{\n    \"a\" => \"Alpha\",\n    \"b\" => \"Beta\",\n    _ => \"Unknown\"\n};"
+    },
+    {
+      "id": "cs_lambda",
+      "name": "Lambda",
+      "category": "Functions",
+      "description": "Lambda expression",
+      "tags": ["lambda", "functional"],
+      "content": "(param) => {\n    return result;\n}"
+    },
+    {
+      "id": "cs_linq",
+      "name": "LINQ Query",
+      "category": "LINQ",
+      "description": "LINQ method syntax",
+      "tags": ["linq", "query"],
+      "content": "var result = items\n    .Where(x => condition)\n    .Select(x => transform)\n    .ToList();"
+    },
+    {
+      "id": "cs_null_coalesce",
+      "name": "Null Coalescing",
+      "category": "Operators",
+      "description": "Null handling operators",
+      "tags": ["null", "operator"],
+      "content": "var value = nullableValue ?? defaultValue;\nvar prop = obj?.Property ?? \"default\";"
+    }
+  ]
+}
+

@@ -1,0 +1,311 @@
+{
+  "name": "JavaScript Basics",
+  "description": "Common JavaScript/TypeScript code templates",
+  "snippets": [
+    {
+      "id": "js_for_loop",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "Traditional for loop",
+      "tags": ["loop", "iteration"],
+      "content": "for (let i = 0; i < array.length; i++) {\n    \n}"
+    },
+    {
+      "id": "js_for_of",
+      "name": "For...of Loop",
+      "category": "Loops",
+      "description": "Iterate over values",
+      "tags": ["loop", "iteration"],
+      "content": "for (const item of items) {\n    \n}"
+    },
+    {
+      "id": "js_for_in",
+      "name": "For...in Loop",
+      "category": "Loops",
+      "description": "Iterate over keys",
+      "tags": ["loop", "iteration"],
+      "content": "for (const key in object) {\n    \n}"
+    },
+    {
+      "id": "js_foreach",
+      "name": "forEach",
+      "category": "Loops",
+      "description": "Array forEach method",
+      "tags": ["loop", "array"],
+      "content": "items.forEach((item, index) => {\n    \n});"
+    },
+    {
+      "id": "js_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "While loop",
+      "tags": ["loop", "iteration"],
+      "content": "while (condition) {\n    \n}"
+    },
+    {
+      "id": "js_function",
+      "name": "Function",
+      "category": "Functions",
+      "description": "Function declaration",
+      "tags": ["function"],
+      "content": "function functionName(param1, param2) {\n    return result;\n}"
+    },
+    {
+      "id": "js_arrow",
+      "name": "Arrow Function",
+      "category": "Functions",
+      "description": "Arrow function expression",
+      "tags": ["function", "arrow"],
+      "content": "const functionName = (param1, param2) => {\n    return result;\n};"
+    },
+    {
+      "id": "js_arrow_short",
+      "name": "Arrow Function (short)",
+      "category": "Functions",
+      "description": "Single expression arrow function",
+      "tags": ["function", "arrow"],
+      "content": "const fn = (x) => x * 2;"
+    },
+    {
+      "id": "js_async_function",
+      "name": "Async Function",
+      "category": "Async",
+      "description": "Async function declaration",
+      "tags": ["async", "await"],
+      "content": "async function fetchData() {\n    const response = await fetch(url);\n    const data = await response.json();\n    return data;\n}"
+    },
+    {
+      "id": "js_async_arrow",
+      "name": "Async Arrow Function",
+      "category": "Async",
+      "description": "Async arrow function",
+      "tags": ["async", "await", "arrow"],
+      "content": "const fetchData = async () => {\n    const response = await fetch(url);\n    return await response.json();\n};"
+    },
+    {
+      "id": "js_promise",
+      "name": "Promise",
+      "category": "Async",
+      "description": "Create a Promise",
+      "tags": ["promise", "async"],
+      "content": "new Promise((resolve, reject) => {\n    if (success) {\n        resolve(result);\n    } else {\n        reject(new Error('Failed'));\n    }\n});"
+    },
+    {
+      "id": "js_try_catch",
+      "name": "Try/Catch",
+      "category": "Error Handling",
+      "description": "Try catch block",
+      "tags": ["error", "exception"],
+      "content": "try {\n    \n} catch (error) {\n    console.error(error);\n}"
+    },
+    {
+      "id": "js_try_catch_finally",
+      "name": "Try/Catch/Finally",
+      "category": "Error Handling",
+      "description": "Try catch with finally",
+      "tags": ["error", "exception"],
+      "content": "try {\n    \n} catch (error) {\n    console.error(error);\n} finally {\n    // Cleanup\n}"
+    },
+    {
+      "id": "js_class",
+      "name": "Class",
+      "category": "Classes",
+      "description": "ES6 class definition",
+      "tags": ["class", "oop"],
+      "content": "class ClassName {\n    constructor(param) {\n        this.param = param;\n    }\n    \n    method() {\n        \n    }\n}"
+    },
+    {
+      "id": "js_class_extends",
+      "name": "Class (extends)",
+      "category": "Classes",
+      "description": "Class with inheritance",
+      "tags": ["class", "extends", "inheritance"],
+      "content": "class ChildClass extends ParentClass {\n    constructor(param) {\n        super(param);\n    }\n}"
+    },
+    {
+      "id": "js_getter_setter",
+      "name": "Getter/Setter",
+      "category": "Classes",
+      "description": "Property getter and setter",
+      "tags": ["getter", "setter", "property"],
+      "content": "get name() {\n    return this._name;\n}\n\nset name(value) {\n    this._name = value;\n}"
+    },
+    {
+      "id": "js_if_else",
+      "name": "If/Else",
+      "category": "Conditionals",
+      "description": "Conditional statement",
+      "tags": ["if", "conditional"],
+      "content": "if (condition) {\n    \n} else if (otherCondition) {\n    \n} else {\n    \n}"
+    },
+    {
+      "id": "js_ternary",
+      "name": "Ternary Operator",
+      "category": "Conditionals",
+      "description": "Conditional expression",
+      "tags": ["ternary", "conditional"],
+      "content": "const result = condition ? valueIfTrue : valueIfFalse;"
+    },
+    {
+      "id": "js_switch",
+      "name": "Switch Statement",
+      "category": "Conditionals",
+      "description": "Switch case statement",
+      "tags": ["switch", "case"],
+      "content": "switch (value) {\n    case 'a':\n        break;\n    case 'b':\n        break;\n    default:\n        break;\n}"
+    },
+    {
+      "id": "js_map",
+      "name": "Array Map",
+      "category": "Arrays",
+      "description": "Transform array elements",
+      "tags": ["array", "map"],
+      "content": "const result = items.map((item) => {\n    return transformedItem;\n});"
+    },
+    {
+      "id": "js_filter",
+      "name": "Array Filter",
+      "category": "Arrays",
+      "description": "Filter array elements",
+      "tags": ["array", "filter"],
+      "content": "const filtered = items.filter((item) => condition);"
+    },
+    {
+      "id": "js_reduce",
+      "name": "Array Reduce",
+      "category": "Arrays",
+      "description": "Reduce array to single value",
+      "tags": ["array", "reduce"],
+      "content": "const total = items.reduce((acc, item) => acc + item, 0);"
+    },
+    {
+      "id": "js_find",
+      "name": "Array Find",
+      "category": "Arrays",
+      "description": "Find element in array",
+      "tags": ["array", "find"],
+      "content": "const found = items.find((item) => item.id === targetId);"
+    },
+    {
+      "id": "js_destructure_obj",
+      "name": "Object Destructuring",
+      "category": "Destructuring",
+      "description": "Destructure object properties",
+      "tags": ["destructuring", "object"],
+      "content": "const { prop1, prop2, prop3: renamed } = object;"
+    },
+    {
+      "id": "js_destructure_arr",
+      "name": "Array Destructuring",
+      "category": "Destructuring",
+      "description": "Destructure array elements",
+      "tags": ["destructuring", "array"],
+      "content": "const [first, second, ...rest] = array;"
+    },
+    {
+      "id": "js_spread",
+      "name": "Spread Operator",
+      "category": "Operators",
+      "description": "Spread syntax for arrays/objects",
+      "tags": ["spread", "operator"],
+      "content": "const combined = { ...obj1, ...obj2 };\nconst merged = [...arr1, ...arr2];"
+    },
+    {
+      "id": "js_optional_chain",
+      "name": "Optional Chaining",
+      "category": "Operators",
+      "description": "Safe property access",
+      "tags": ["optional", "chaining"],
+      "content": "const value = obj?.nested?.property ?? defaultValue;"
+    },
+    {
+      "id": "js_fetch",
+      "name": "Fetch API",
+      "category": "Network",
+      "description": "HTTP request with fetch",
+      "tags": ["fetch", "http", "api"],
+      "content": "const response = await fetch(url, {\n    method: 'POST',\n    headers: {\n        'Content-Type': 'application/json',\n    },\n    body: JSON.stringify(data),\n});\nconst result = await response.json();"
+    },
+    {
+      "id": "js_promise_all",
+      "name": "Promise.all",
+      "category": "Async",
+      "description": "Wait for multiple promises",
+      "tags": ["promise", "async"],
+      "content": "const results = await Promise.all([\n    promise1,\n    promise2,\n    promise3,\n]);"
+    },
+    {
+      "id": "js_set_timeout",
+      "name": "setTimeout",
+      "category": "Timers",
+      "description": "Delayed execution",
+      "tags": ["timeout", "timer"],
+      "content": "setTimeout(() => {\n    \n}, 1000);"
+    },
+    {
+      "id": "js_set_interval",
+      "name": "setInterval",
+      "category": "Timers",
+      "description": "Repeated execution",
+      "tags": ["interval", "timer"],
+      "content": "const intervalId = setInterval(() => {\n    \n}, 1000);\n\n// clearInterval(intervalId);"
+    },
+    {
+      "id": "js_event_listener",
+      "name": "Event Listener",
+      "category": "DOM",
+      "description": "Add event listener",
+      "tags": ["event", "dom"],
+      "content": "element.addEventListener('click', (event) => {\n    \n});"
+    },
+    {
+      "id": "js_query_selector",
+      "name": "Query Selector",
+      "category": "DOM",
+      "description": "Select DOM elements",
+      "tags": ["dom", "selector"],
+      "content": "const element = document.querySelector('.class');\nconst elements = document.querySelectorAll('.class');"
+    },
+    {
+      "id": "js_local_storage",
+      "name": "Local Storage",
+      "category": "Storage",
+      "description": "Browser local storage",
+      "tags": ["storage", "local"],
+      "content": "localStorage.setItem('key', JSON.stringify(value));\nconst data = JSON.parse(localStorage.getItem('key'));"
+    },
+    {
+      "id": "js_module_export",
+      "name": "Module Export",
+      "category": "Modules",
+      "description": "ES6 module exports",
+      "tags": ["module", "export"],
+      "content": "export { functionName, ClassName };\nexport default MainExport;"
+    },
+    {
+      "id": "js_module_import",
+      "name": "Module Import",
+      "category": "Modules",
+      "description": "ES6 module imports",
+      "tags": ["module", "import"],
+      "content": "import DefaultExport from './module';\nimport { named1, named2 } from './module';"
+    },
+    {
+      "id": "js_regex",
+      "name": "Regular Expression",
+      "category": "Strings",
+      "description": "Regex pattern matching",
+      "tags": ["regex", "pattern"],
+      "content": "const pattern = /regex/gi;\nconst matches = string.match(pattern);\nconst isMatch = pattern.test(string);"
+    },
+    {
+      "id": "js_template_literal",
+      "name": "Template Literal",
+      "category": "Strings",
+      "description": "Template string with expressions",
+      "tags": ["template", "string"],
+      "content": "const message = `Hello, ${name}! You have ${count} items.`;"
+    }
+  ]
+}
+

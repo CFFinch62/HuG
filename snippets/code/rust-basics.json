@@ -1,0 +1,167 @@
+{
+  "name": "Rust Basics",
+  "description": "Common Rust code templates and patterns",
+  "snippets": [
+    {
+      "id": "rs_for",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "For loop with iterator",
+      "tags": ["loop", "iteration"],
+      "content": "for item in items.iter() {\n    \n}"
+    },
+    {
+      "id": "rs_for_range",
+      "name": "For Range",
+      "category": "Loops",
+      "description": "For loop with range",
+      "tags": ["loop", "range"],
+      "content": "for i in 0..n {\n    \n}"
+    },
+    {
+      "id": "rs_for_enumerate",
+      "name": "For Enumerate",
+      "category": "Loops",
+      "description": "For loop with index",
+      "tags": ["loop", "enumerate"],
+      "content": "for (i, item) in items.iter().enumerate() {\n    \n}"
+    },
+    {
+      "id": "rs_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "While loop",
+      "tags": ["loop"],
+      "content": "while condition {\n    \n}"
+    },
+    {
+      "id": "rs_loop",
+      "name": "Loop",
+      "category": "Loops",
+      "description": "Infinite loop",
+      "tags": ["loop"],
+      "content": "loop {\n    if condition {\n        break;\n    }\n}"
+    },
+    {
+      "id": "rs_function",
+      "name": "Function",
+      "category": "Functions",
+      "description": "Function definition",
+      "tags": ["function", "fn"],
+      "content": "fn function_name(param: Type) -> ReturnType {\n    result\n}"
+    },
+    {
+      "id": "rs_result",
+      "name": "Result Function",
+      "category": "Functions",
+      "description": "Function returning Result",
+      "tags": ["function", "result"],
+      "content": "fn function_name(param: Type) -> Result<ReturnType, Error> {\n    Ok(result)\n}"
+    },
+    {
+      "id": "rs_match",
+      "name": "Match",
+      "category": "Conditionals",
+      "description": "Match expression",
+      "tags": ["match", "pattern"],
+      "content": "match value {\n    Pattern1 => result1,\n    Pattern2 => result2,\n    _ => default,\n}"
+    },
+    {
+      "id": "rs_if_let",
+      "name": "If Let",
+      "category": "Conditionals",
+      "description": "Pattern matching if",
+      "tags": ["if", "let", "pattern"],
+      "content": "if let Some(value) = optional {\n    \n}"
+    },
+    {
+      "id": "rs_struct",
+      "name": "Struct",
+      "category": "Types",
+      "description": "Struct definition",
+      "tags": ["struct", "type"],
+      "content": "#[derive(Debug, Clone)]\nstruct StructName {\n    field1: String,\n    field2: i32,\n}"
+    },
+    {
+      "id": "rs_impl",
+      "name": "Impl Block",
+      "category": "Types",
+      "description": "Implementation block",
+      "tags": ["impl", "method"],
+      "content": "impl StructName {\n    pub fn new(field1: String) -> Self {\n        Self { field1, field2: 0 }\n    }\n    \n    pub fn method(&self) -> &str {\n        &self.field1\n    }\n}"
+    },
+    {
+      "id": "rs_enum",
+      "name": "Enum",
+      "category": "Types",
+      "description": "Enum definition",
+      "tags": ["enum", "type"],
+      "content": "#[derive(Debug)]\nenum EnumName {\n    Variant1,\n    Variant2(String),\n    Variant3 { field: i32 },\n}"
+    },
+    {
+      "id": "rs_trait",
+      "name": "Trait",
+      "category": "Types",
+      "description": "Trait definition",
+      "tags": ["trait", "interface"],
+      "content": "trait TraitName {\n    fn method(&self) -> String;\n    \n    fn default_method(&self) {\n        \n    }\n}"
+    },
+    {
+      "id": "rs_impl_trait",
+      "name": "Impl Trait",
+      "category": "Types",
+      "description": "Implement trait for type",
+      "tags": ["impl", "trait"],
+      "content": "impl TraitName for StructName {\n    fn method(&self) -> String {\n        self.field1.clone()\n    }\n}"
+    },
+    {
+      "id": "rs_option",
+      "name": "Option Handling",
+      "category": "Error Handling",
+      "description": "Handle Option type",
+      "tags": ["option", "unwrap"],
+      "content": "let value = optional.unwrap_or_default();\nlet value = optional.unwrap_or(default);\nlet value = optional?;"
+    },
+    {
+      "id": "rs_result_handle",
+      "name": "Result Handling",
+      "category": "Error Handling",
+      "description": "Handle Result type",
+      "tags": ["result", "error"],
+      "content": "let value = result?;\nlet value = result.unwrap_or_default();\nlet value = result.map_err(|e| CustomError::from(e))?;"
+    },
+    {
+      "id": "rs_closure",
+      "name": "Closure",
+      "category": "Functions",
+      "description": "Closure definition",
+      "tags": ["closure", "lambda"],
+      "content": "let closure = |param: Type| -> ReturnType {\n    result\n};"
+    },
+    {
+      "id": "rs_iterator",
+      "name": "Iterator Chain",
+      "category": "Iterators",
+      "description": "Iterator method chain",
+      "tags": ["iterator", "functional"],
+      "content": "items.iter()\n    .filter(|x| condition)\n    .map(|x| transform)\n    .collect::<Vec<_>>()"
+    },
+    {
+      "id": "rs_test",
+      "name": "Test Function",
+      "category": "Testing",
+      "description": "Unit test",
+      "tags": ["test"],
+      "content": "#[test]\nfn test_function_name() {\n    let result = function_name();\n    assert_eq!(result, expected);\n}"
+    },
+    {
+      "id": "rs_main",
+      "name": "Main Function",
+      "category": "Structure",
+      "description": "Entry point",
+      "tags": ["main", "entry"],
+      "content": "fn main() {\n    println!(\"Hello, world!\");\n}"
+    }
+  ]
+}
+

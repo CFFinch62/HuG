@@ -1,0 +1,167 @@
+{
+  "name": "HTML & CSS Basics",
+  "description": "Common HTML and CSS templates",
+  "snippets": [
+    {
+      "id": "html_boilerplate",
+      "name": "HTML Boilerplate",
+      "category": "HTML",
+      "description": "Basic HTML5 document",
+      "tags": ["html", "template"],
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Document</title>\n</head>\n<body>\n    \n</body>\n</html>"
+    },
+    {
+      "id": "html_link_css",
+      "name": "Link CSS",
+      "category": "HTML",
+      "description": "Link external stylesheet",
+      "tags": ["css", "link"],
+      "content": "<link rel=\"stylesheet\" href=\"styles.css\">"
+    },
+    {
+      "id": "html_script",
+      "name": "Script Tag",
+      "category": "HTML",
+      "description": "Include JavaScript",
+      "tags": ["script", "js"],
+      "content": "<script src=\"script.js\" defer></script>"
+    },
+    {
+      "id": "html_form",
+      "name": "Form",
+      "category": "HTML",
+      "description": "Basic form",
+      "tags": ["form", "input"],
+      "content": "<form action=\"/submit\" method=\"POST\">\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" name=\"name\" required>\n    \n    <label for=\"email\">Email:</label>\n    <input type=\"email\" id=\"email\" name=\"email\" required>\n    \n    <button type=\"submit\">Submit</button>\n</form>"
+    },
+    {
+      "id": "html_input_text",
+      "name": "Text Input",
+      "category": "HTML",
+      "description": "Text input with label",
+      "tags": ["input", "text"],
+      "content": "<label for=\"fieldname\">Label:</label>\n<input type=\"text\" id=\"fieldname\" name=\"fieldname\" placeholder=\"Enter text\">"
+    },
+    {
+      "id": "html_select",
+      "name": "Select Dropdown",
+      "category": "HTML",
+      "description": "Dropdown select",
+      "tags": ["select", "dropdown"],
+      "content": "<select id=\"options\" name=\"options\">\n    <option value=\"\">Select...</option>\n    <option value=\"1\">Option 1</option>\n    <option value=\"2\">Option 2</option>\n</select>"
+    },
+    {
+      "id": "html_table",
+      "name": "Table",
+      "category": "HTML",
+      "description": "Basic table",
+      "tags": ["table"],
+      "content": "<table>\n    <thead>\n        <tr>\n            <th>Header 1</th>\n            <th>Header 2</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Cell 1</td>\n            <td>Cell 2</td>\n        </tr>\n    </tbody>\n</table>"
+    },
+    {
+      "id": "html_nav",
+      "name": "Navigation",
+      "category": "HTML",
+      "description": "Navigation bar",
+      "tags": ["nav", "navigation"],
+      "content": "<nav>\n    <ul>\n        <li><a href=\"/\">Home</a></li>\n        <li><a href=\"/about\">About</a></li>\n        <li><a href=\"/contact\">Contact</a></li>\n    </ul>\n</nav>"
+    },
+    {
+      "id": "html_img",
+      "name": "Image",
+      "category": "HTML",
+      "description": "Responsive image",
+      "tags": ["image", "img"],
+      "content": "<img src=\"image.jpg\" alt=\"Description\" loading=\"lazy\">"
+    },
+    {
+      "id": "css_reset",
+      "name": "CSS Reset",
+      "category": "CSS",
+      "description": "Basic CSS reset",
+      "tags": ["reset", "normalize"],
+      "content": "*, *::before, *::after {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}"
+    },
+    {
+      "id": "css_flex_center",
+      "name": "Flexbox Center",
+      "category": "CSS",
+      "description": "Center with flexbox",
+      "tags": ["flexbox", "center"],
+      "content": "display: flex;\njustify-content: center;\nalign-items: center;"
+    },
+    {
+      "id": "css_flex_column",
+      "name": "Flexbox Column",
+      "category": "CSS",
+      "description": "Vertical flex layout",
+      "tags": ["flexbox", "column"],
+      "content": "display: flex;\nflex-direction: column;\ngap: 1rem;"
+    },
+    {
+      "id": "css_grid",
+      "name": "CSS Grid",
+      "category": "CSS",
+      "description": "Basic grid layout",
+      "tags": ["grid", "layout"],
+      "content": "display: grid;\ngrid-template-columns: repeat(3, 1fr);\ngap: 1rem;"
+    },
+    {
+      "id": "css_grid_responsive",
+      "name": "Grid Responsive",
+      "category": "CSS",
+      "description": "Auto-fit responsive grid",
+      "tags": ["grid", "responsive"],
+      "content": "display: grid;\ngrid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\ngap: 1rem;"
+    },
+    {
+      "id": "css_media_query",
+      "name": "Media Query",
+      "category": "CSS",
+      "description": "Responsive breakpoint",
+      "tags": ["media", "responsive"],
+      "content": "@media (max-width: 768px) {\n    .element {\n        \n    }\n}"
+    },
+    {
+      "id": "css_variable",
+      "name": "CSS Variables",
+      "category": "CSS",
+      "description": "Custom properties",
+      "tags": ["variable", "custom"],
+      "content": ":root {\n    --primary-color: #3498db;\n    --spacing: 1rem;\n}\n\n.element {\n    color: var(--primary-color);\n    padding: var(--spacing);\n}"
+    },
+    {
+      "id": "css_transition",
+      "name": "Transition",
+      "category": "CSS",
+      "description": "Smooth transition",
+      "tags": ["transition", "animation"],
+      "content": "transition: all 0.3s ease;"
+    },
+    {
+      "id": "css_shadow",
+      "name": "Box Shadow",
+      "category": "CSS",
+      "description": "Box shadow effect",
+      "tags": ["shadow", "effect"],
+      "content": "box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+    },
+    {
+      "id": "css_truncate",
+      "name": "Text Truncate",
+      "category": "CSS",
+      "description": "Truncate text with ellipsis",
+      "tags": ["text", "truncate"],
+      "content": "white-space: nowrap;\noverflow: hidden;\ntext-overflow: ellipsis;"
+    },
+    {
+      "id": "css_sr_only",
+      "name": "Screen Reader Only",
+      "category": "CSS",
+      "description": "Visually hidden but accessible",
+      "tags": ["accessibility", "sr-only"],
+      "content": ".sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip: rect(0, 0, 0, 0);\n    border: 0;\n}"
+    }
+  ]
+}
+

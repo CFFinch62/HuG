@@ -1,0 +1,143 @@
+{
+  "name": "TypeScript Basics",
+  "description": "TypeScript-specific templates and patterns",
+  "snippets": [
+    {
+      "id": "ts_interface",
+      "name": "Interface",
+      "category": "Types",
+      "description": "Interface definition",
+      "tags": ["interface", "type"],
+      "content": "interface IName {\n    property: string;\n    optionalProp?: number;\n    method(): void;\n}"
+    },
+    {
+      "id": "ts_type",
+      "name": "Type Alias",
+      "category": "Types",
+      "description": "Type alias definition",
+      "tags": ["type", "alias"],
+      "content": "type Name = {\n    property: string;\n    count: number;\n};"
+    },
+    {
+      "id": "ts_union",
+      "name": "Union Type",
+      "category": "Types",
+      "description": "Union type definition",
+      "tags": ["union", "type"],
+      "content": "type Status = 'pending' | 'success' | 'error';"
+    },
+    {
+      "id": "ts_generic_function",
+      "name": "Generic Function",
+      "category": "Generics",
+      "description": "Function with generic type",
+      "tags": ["generic", "function"],
+      "content": "function identity<T>(value: T): T {\n    return value;\n}"
+    },
+    {
+      "id": "ts_generic_interface",
+      "name": "Generic Interface",
+      "category": "Generics",
+      "description": "Interface with generic type",
+      "tags": ["generic", "interface"],
+      "content": "interface Container<T> {\n    value: T;\n    getValue(): T;\n}"
+    },
+    {
+      "id": "ts_class",
+      "name": "Class (typed)",
+      "category": "Classes",
+      "description": "TypeScript class with types",
+      "tags": ["class", "typed"],
+      "content": "class ClassName {\n    private name: string;\n    public count: number;\n    \n    constructor(name: string) {\n        this.name = name;\n        this.count = 0;\n    }\n    \n    public method(): void {\n        \n    }\n}"
+    },
+    {
+      "id": "ts_enum",
+      "name": "Enum",
+      "category": "Types",
+      "description": "Enum definition",
+      "tags": ["enum", "constant"],
+      "content": "enum Status {\n    Pending = 'pending',\n    Success = 'success',\n    Error = 'error',\n}"
+    },
+    {
+      "id": "ts_const_enum",
+      "name": "Const Enum",
+      "category": "Types",
+      "description": "Const enum (inlined)",
+      "tags": ["enum", "const"],
+      "content": "const enum Direction {\n    Up,\n    Down,\n    Left,\n    Right,\n}"
+    },
+    {
+      "id": "ts_async_function",
+      "name": "Async Function (typed)",
+      "category": "Async",
+      "description": "Typed async function",
+      "tags": ["async", "typed"],
+      "content": "async function fetchData(): Promise<DataType> {\n    const response = await fetch(url);\n    return await response.json();\n}"
+    },
+    {
+      "id": "ts_type_guard",
+      "name": "Type Guard",
+      "category": "Types",
+      "description": "Type guard function",
+      "tags": ["guard", "type"],
+      "content": "function isString(value: unknown): value is string {\n    return typeof value === 'string';\n}"
+    },
+    {
+      "id": "ts_readonly",
+      "name": "Readonly Type",
+      "category": "Types",
+      "description": "Readonly utility type",
+      "tags": ["readonly", "utility"],
+      "content": "type ReadonlyUser = Readonly<User>;"
+    },
+    {
+      "id": "ts_partial",
+      "name": "Partial Type",
+      "category": "Types",
+      "description": "Partial utility type",
+      "tags": ["partial", "utility"],
+      "content": "type PartialUser = Partial<User>;"
+    },
+    {
+      "id": "ts_pick",
+      "name": "Pick Type",
+      "category": "Types",
+      "description": "Pick utility type",
+      "tags": ["pick", "utility"],
+      "content": "type UserName = Pick<User, 'firstName' | 'lastName'>;"
+    },
+    {
+      "id": "ts_omit",
+      "name": "Omit Type",
+      "category": "Types",
+      "description": "Omit utility type",
+      "tags": ["omit", "utility"],
+      "content": "type UserWithoutId = Omit<User, 'id'>;"
+    },
+    {
+      "id": "ts_record",
+      "name": "Record Type",
+      "category": "Types",
+      "description": "Record utility type",
+      "tags": ["record", "utility"],
+      "content": "type UserMap = Record<string, User>;"
+    },
+    {
+      "id": "ts_module",
+      "name": "Module Export",
+      "category": "Modules",
+      "description": "Named exports",
+      "tags": ["module", "export"],
+      "content": "export { functionName, ClassName };\nexport type { TypeName };"
+    },
+    {
+      "id": "ts_declare",
+      "name": "Declare Module",
+      "category": "Modules",
+      "description": "Ambient module declaration",
+      "tags": ["declare", "module"],
+      "content": "declare module 'module-name' {\n    export function fn(): void;\n}"
+    }
+  ]
+}
+

@@ -1,0 +1,151 @@
+{
+  "name": "SQL Basics",
+  "description": "Common SQL query templates",
+  "snippets": [
+    {
+      "id": "sql_select",
+      "name": "SELECT",
+      "category": "Queries",
+      "description": "Basic SELECT query",
+      "tags": ["select", "query"],
+      "content": "SELECT column1, column2\nFROM table_name\nWHERE condition\nORDER BY column1;"
+    },
+    {
+      "id": "sql_select_all",
+      "name": "SELECT All",
+      "category": "Queries",
+      "description": "Select all columns",
+      "tags": ["select", "query"],
+      "content": "SELECT * FROM table_name;"
+    },
+    {
+      "id": "sql_select_distinct",
+      "name": "SELECT DISTINCT",
+      "category": "Queries",
+      "description": "Select unique values",
+      "tags": ["select", "distinct"],
+      "content": "SELECT DISTINCT column1\nFROM table_name;"
+    },
+    {
+      "id": "sql_insert",
+      "name": "INSERT",
+      "category": "Modifications",
+      "description": "Insert single row",
+      "tags": ["insert"],
+      "content": "INSERT INTO table_name (column1, column2)\nVALUES ('value1', 'value2');"
+    },
+    {
+      "id": "sql_insert_multi",
+      "name": "INSERT Multiple",
+      "category": "Modifications",
+      "description": "Insert multiple rows",
+      "tags": ["insert"],
+      "content": "INSERT INTO table_name (column1, column2)\nVALUES\n    ('value1', 'value2'),\n    ('value3', 'value4'),\n    ('value5', 'value6');"
+    },
+    {
+      "id": "sql_update",
+      "name": "UPDATE",
+      "category": "Modifications",
+      "description": "Update rows",
+      "tags": ["update"],
+      "content": "UPDATE table_name\nSET column1 = 'new_value'\nWHERE condition;"
+    },
+    {
+      "id": "sql_delete",
+      "name": "DELETE",
+      "category": "Modifications",
+      "description": "Delete rows",
+      "tags": ["delete"],
+      "content": "DELETE FROM table_name\nWHERE condition;"
+    },
+    {
+      "id": "sql_join",
+      "name": "JOIN",
+      "category": "Joins",
+      "description": "Inner join",
+      "tags": ["join"],
+      "content": "SELECT a.column1, b.column2\nFROM table_a a\nINNER JOIN table_b b ON a.id = b.a_id;"
+    },
+    {
+      "id": "sql_left_join",
+      "name": "LEFT JOIN",
+      "category": "Joins",
+      "description": "Left outer join",
+      "tags": ["join", "left"],
+      "content": "SELECT a.column1, b.column2\nFROM table_a a\nLEFT JOIN table_b b ON a.id = b.a_id;"
+    },
+    {
+      "id": "sql_group_by",
+      "name": "GROUP BY",
+      "category": "Aggregation",
+      "description": "Group and aggregate",
+      "tags": ["group", "aggregate"],
+      "content": "SELECT column1, COUNT(*) as count\nFROM table_name\nGROUP BY column1\nHAVING COUNT(*) > 1;"
+    },
+    {
+      "id": "sql_subquery",
+      "name": "Subquery",
+      "category": "Queries",
+      "description": "Query with subquery",
+      "tags": ["subquery"],
+      "content": "SELECT *\nFROM table_name\nWHERE column1 IN (\n    SELECT column1\n    FROM other_table\n    WHERE condition\n);"
+    },
+    {
+      "id": "sql_cte",
+      "name": "CTE (WITH)",
+      "category": "Queries",
+      "description": "Common Table Expression",
+      "tags": ["cte", "with"],
+      "content": "WITH cte_name AS (\n    SELECT column1, column2\n    FROM table_name\n    WHERE condition\n)\nSELECT * FROM cte_name;"
+    },
+    {
+      "id": "sql_create_table",
+      "name": "CREATE TABLE",
+      "category": "DDL",
+      "description": "Create table",
+      "tags": ["create", "table"],
+      "content": "CREATE TABLE table_name (\n    id INT PRIMARY KEY AUTO_INCREMENT,\n    name VARCHAR(255) NOT NULL,\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);"
+    },
+    {
+      "id": "sql_alter_table",
+      "name": "ALTER TABLE",
+      "category": "DDL",
+      "description": "Modify table",
+      "tags": ["alter", "table"],
+      "content": "ALTER TABLE table_name\nADD COLUMN new_column VARCHAR(255);"
+    },
+    {
+      "id": "sql_index",
+      "name": "CREATE INDEX",
+      "category": "DDL",
+      "description": "Create index",
+      "tags": ["index"],
+      "content": "CREATE INDEX idx_name\nON table_name (column1, column2);"
+    },
+    {
+      "id": "sql_case",
+      "name": "CASE Expression",
+      "category": "Expressions",
+      "description": "Conditional expression",
+      "tags": ["case", "conditional"],
+      "content": "SELECT\n    column1,\n    CASE\n        WHEN condition1 THEN 'result1'\n        WHEN condition2 THEN 'result2'\n        ELSE 'default'\n    END AS result\nFROM table_name;"
+    },
+    {
+      "id": "sql_coalesce",
+      "name": "COALESCE",
+      "category": "Expressions",
+      "description": "First non-null value",
+      "tags": ["coalesce", "null"],
+      "content": "SELECT COALESCE(column1, column2, 'default') AS result\nFROM table_name;"
+    },
+    {
+      "id": "sql_transaction",
+      "name": "Transaction",
+      "category": "Transactions",
+      "description": "Transaction block",
+      "tags": ["transaction", "commit"],
+      "content": "BEGIN TRANSACTION;\n\nUPDATE table_name SET column1 = 'value' WHERE id = 1;\n\nCOMMIT;\n-- or ROLLBACK;"
+    }
+  ]
+}
+

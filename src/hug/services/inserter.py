@@ -10,6 +10,7 @@ from PySide6.QtGui import QClipboard, QGuiApplication
 from pynput.keyboard import Controller, Key, KeyCode
 
 from hug.config import ClipboardConfig
+from hug.models.snippet import Snippet
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +38,40 @@ class TextInserter:
                 logger.warning(f"Could not save active window: {e}")
                 self._last_active_window = None
 
-    def insert(self, text: str) -> bool:
+    def _process_snippet_text(self, text: str, snippet: Snippet | None) -> str:
+        """
+        Process snippet text based on its type.
+
+        - Code snippets: preserve trailing whitespace (needed for proper formatting)
+        - General text snippets: strip trailing whitespace and add single space for chaining
+        """
+        if snippet is None:
+            # No snippet metadata, just strip trailing whitespace
+            return text.rstrip()
+
+        # Check if this is a code snippet based on language field or library name
+        is_code_snippet = False
+
+        if snippet.language and snippet.language.lower() not in ['', 'text', 'general']:
+            is_code_snippet = True
+        elif snippet.library_name:
+            # Check if library name suggests code (e.g., "Python Basics", "JavaScript Basics")
+            lib_lower = snippet.library_name.lower()
+            code_indicators = ['python', 'javascript', 'java', 'ruby', 'rust', 'go',
+                             'bash', 'shell', 'html', 'css', 'sql', 'typescript',
+                             'c#', 'csharp', 'c++', 'cpp', 'php', 'swift', 'kotlin']
+            is_code_snippet = any(indicator in lib_lower for indicator in code_indicators)
+
+        if is_code_snippet:
+            # Preserve trailing whitespace for code snippets
+            logger.info(f"Code snippet detected, preserving trailing whitespace")
+            return text
+        else:
+            # General text snippet: strip all trailing whitespace and add single space
+            logger.info(f"General text snippet detected, normalizing whitespace")
+            return text.rstrip() + ' '
+
+    def insert(self, text: str, snippet: Snippet | None = None) -> bool:
         """
         Insert text at current cursor position.
 
@@ -58,6 +92,9 @@ class TextInserter:
             previous_text = None
             if self.config.restore_previous:
                 previous_text = clipboard.text()
+
+            # Process text based on snippet type
+            text = self._process_snippet_text(text, snippet)
 
             # Set new text
             logger.info(f"Setting clipboard text (first 50 chars): {text[:50] if len(text) > 50 else text}")

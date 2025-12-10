@@ -99,7 +99,7 @@ class HugApp(QObject):
     def on_snippet_selected(self, snippet: Snippet) -> None:
         """Handle snippet selection from tray."""
         logger.info(f" inserting snippet: {snippet.name}")
-        success = self.inserter.insert(snippet.content)
+        success = self.inserter.insert(snippet.content, snippet)
         if not success:
             logger.error("Failed to insert snippet")
 

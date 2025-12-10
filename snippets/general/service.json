@@ -1,0 +1,252 @@
+{
+  "name": "Service Snippets",
+  "description": "General service and warranty snippets",
+  "snippets": [
+    {
+      "id": "svc_advanced_warranty_replacement",
+      "name": "Advanced Warranty Replacement",
+      "category": "Advanced",
+      "description": "Advanced Warranty Replacement",
+      "tags": [
+        "advanced",
+        "warranty",
+        "replacement"
+      ],
+      "content": "Customer: \nAddress: \nCity: \nState: \nZip: \nPhone: \nEmail: \n\nDefective Unit SN: \nReported Complaint: \n\nQty: \nPN: \n\nPayment Info: "
+    },
+    {
+      "id": "svc_billing_warranty",
+      "name": "Billing Warranty",
+      "category": "Billing",
+      "description": "Billing Warranty",
+      "tags": [
+        "billing",
+        "warranty"
+      ],
+      "content": "Please create appropriate warranty paperwork return repaired or replacement equipment to dealer/customer.\n"
+    },
+    {
+      "id": "svc_customer_billing",
+      "name": "Customer Billing",
+      "category": "Customer",
+      "description": "Customer Billing",
+      "tags": [
+        "customer",
+        "billing"
+      ],
+      "content": "Please create appropriate invoice and return repaired or replacement equipment to customer.\n"
+    },
+    {
+      "id": "svc_customer_order",
+      "name": "Customer Order",
+      "category": "Customer",
+      "description": "Customer Order",
+      "tags": [
+        "customer",
+        "order"
+      ],
+      "content": "Customer:\nAddress:\nCity:\nState:\nZip:\nPhone:\nEmail:\n\nQty:\nPN:\nDesc:\n\nShipping:\nPayment Info:\n"
+    },
+    {
+      "id": "svc_customer_task",
+      "name": "Customer Task",
+      "category": "Customer",
+      "description": "Customer Task",
+      "tags": [
+        "customer",
+        "task"
+      ],
+      "content": "Product:\n\nIssue:\n"
+    },
+    {
+      "id": "svc_dealer_billing",
+      "name": "Dealer Billing",
+      "category": "Dealer",
+      "description": "Dealer Billing",
+      "tags": [
+        "dealer",
+        "billing"
+      ],
+      "content": "Please create appropriate invoice and return repaired or replacement equipment to dealer.\n"
+    },
+    {
+      "id": "svc_dealer_order",
+      "name": "Dealer Order",
+      "category": "Dealer",
+      "description": "Dealer Order",
+      "tags": [
+        "dealer",
+        "order"
+      ],
+      "content": "Dealer:\nPO:\nShipping:\n\nQty:\nItem:\n"
+    },
+    {
+      "id": "svc_dealer_task",
+      "name": "Dealer Task",
+      "category": "Dealer",
+      "description": "Dealer Task",
+      "tags": [
+        "dealer",
+        "task"
+      ],
+      "content": "Contact:\nProduct:\n\nIssue:\n"
+    },
+    {
+      "id": "svc_factory_reset",
+      "name": "Factory Reset",
+      "category": "Factory",
+      "description": "Factory Reset",
+      "tags": [
+        "factory",
+        "reset"
+      ],
+      "content": "Factory Reset Completed.\n"
+    },
+    {
+      "id": "svc_meets_specs",
+      "name": "Meets Specs",
+      "category": "Meets",
+      "description": "Meets Specs",
+      "tags": [
+        "meets",
+        "specs"
+      ],
+      "content": "All tests completed and passed. Unit meets all published specifications.\n"
+    },
+    {
+      "id": "svc_rma",
+      "name": "RMA",
+      "category": "RMA",
+      "description": "RMA",
+      "tags": [
+        "rma"
+      ],
+      "content": "Go to the following link to fill out our online RMA request. \n\nhttps://sitexservice.bluefolder.com/portal/\n\nOnce you have submitted the form you will be issued a 4-digit RMA number and given the return shipping address.\n\nWrite the RMA number on the shipping container the unit is being returned in (or on a note placed inside).\n\nIf you believe this is a warranty related issue please send us a copy of your sales receipt, or other proof of purchase, in the box with the unit being returned as well.\n"
+    },
+    {
+      "id": "svc_signature",
+      "name": "Signature",
+      "category": "Signature",
+      "description": "Signature",
+      "tags": [
+        "signature"
+      ],
+      "content": "Best Regards,\n\nChuck Finch\nService Manager\nSi-Tex / Koden\n25 Enterprise Zone Drive - Suite 2\nRiverhead, NY 11901\n(631) 996-2690 Office\n(631) 669-2693 Fax\n(631) 276-9068 Mobile\nwww.si-tex.com\nwww.si-tex.com/koden/"
+    },
+    {
+      "id": "svc_software_update",
+      "name": "Software Update",
+      "category": "Software",
+      "description": "Software Update",
+      "tags": [
+        "software",
+        "update"
+      ],
+      "content": "Updated software/firmware to current version. \n"
+    },
+    {
+      "id": "svc_test_all",
+      "name": "Test All",
+      "category": "Test",
+      "description": "Test All",
+      "tags": [
+        "test",
+        "all"
+      ],
+      "content": "Completed power cycle test of unit (unit has been shut down and restarted many times). Completed functional test of unit (buttons, knobs, switches, touch screen, features). All data interface ports have been tested and found to be fully functional. Completed all performance tests (transmitters, receivers, and card readers). All tests completed and passed. Unit meets all published specifications.\n\n\n\n\n \n\n"
+    },
+    {
+      "id": "svc_test_burn_in",
+      "name": "Test Burn In",
+      "category": "Test",
+      "description": "Test Burn In",
+      "tags": [
+        "test",
+        "burn",
+        "in"
+      ],
+      "content": "Completed multi-hour equipment burn in test. \n"
+    },
+    {
+      "id": "svc_test_chart_card",
+      "name": "Test Chart Card",
+      "category": "Test",
+      "description": "Test Chart Card",
+      "tags": [
+        "test",
+        "chart",
+        "card"
+      ],
+      "content": "Completed chart card integrity test. \n"
+    },
+    {
+      "id": "svc_test_functional",
+      "name": "Test Functional",
+      "category": "Test",
+      "description": "Test Functional",
+      "tags": [
+        "test",
+        "functional"
+      ],
+      "content": "Completed functional test of unit (buttons, knobs, switches, touch screen, features). \n"
+    },
+    {
+      "id": "svc_test_interfaces",
+      "name": "Test Interfaces",
+      "category": "Test",
+      "description": "Test Interfaces",
+      "tags": [
+        "test",
+        "interfaces"
+      ],
+      "content": "All data interface ports have been tested and found to be fully functional.\n"
+    },
+    {
+      "id": "svc_test_performance",
+      "name": "Test Performance",
+      "category": "Test",
+      "description": "Test Performance",
+      "tags": [
+        "test",
+        "performance"
+      ],
+      "content": "Completed all performance tests (transmitters, receivers, and card readers). \n"
+    },
+    {
+      "id": "svc_test_power_cycle",
+      "name": "Test Power Cycle",
+      "category": "Test",
+      "description": "Test Power Cycle",
+      "tags": [
+        "test",
+        "power",
+        "cycle"
+      ],
+      "content": "Completed power cycle test of unit (unit has been shut down and restarted many times). "
+    },
+    {
+      "id": "svc_user_data_restored",
+      "name": "User Data Restored",
+      "category": "User",
+      "description": "User Data Restored",
+      "tags": [
+        "user",
+        "data",
+        "restored"
+      ],
+      "content": "User data was restored to unit after repair was completed. \n"
+    },
+    {
+      "id": "svc_user_data_saved",
+      "name": "User Data Saved",
+      "category": "User",
+      "description": "User Data Saved",
+      "tags": [
+        "user",
+        "data",
+        "saved"
+      ],
+      "content": "User data was backed up prior to repair start.\n"
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 # HuG - Cross-Platform Snippet Manager
 
+![HuG Screenshot](images/HuG.png)
+
 HuG is a cross-platform (Windows, Linux, macOS) text and code snippet manager designed for developer productivity.
 
 ## Installation

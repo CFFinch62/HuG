@@ -20,6 +20,9 @@ logger = logging.getLogger(__name__)
 
 
 class HugApp(QObject):
+    # Emit this from non-Qt threads to request a summon in the main thread
+    from PySide6.QtCore import Signal
+    summon_requested = Signal()
     def __init__(self, argv: list[str]):
         """Initialize application components."""
         super().__init__()
@@ -41,6 +44,11 @@ class HugApp(QObject):
         self.palette: FloatingPalette | None = None
         self.settings_dialog: SettingsDialog | None = None
         
+        # Ensure hotkey requests from listener threads are handled on the
+        # Qt main thread by emitting a signal that is connected to the
+        # actual slot `on_summon`.
+        self.summon_requested.connect(self.on_summon)
+
         self._setup_services()
         self._setup_ui()
         
@@ -64,7 +72,10 @@ class HugApp(QObject):
         hotkey = self.config.hotkey.summon_palette
         if hotkey:
             logger.info(f"Registering summon hotkey: {hotkey}")
-            self.hotkey_service.register(hotkey, self.on_summon)
+            # Use the signal's emit function as the registered callback so
+            # the hotkey listener can call it from any thread and the
+            # connected slot `on_summon` will execute on the Qt main thread.
+            self.hotkey_service.register(hotkey, self.summon_requested.emit)
             self.hotkey_service.start() # Restart listener if needed
             
     def _setup_ui(self) -> None:
@@ -93,7 +104,16 @@ class HugApp(QObject):
         """Handle summon hotkey."""
         logger.info("Summon hotkey pressed!")
         if self.palette:
-            self.palette.show_at_position()
+            # Toggle visibility so the same hotkey can both show and hide
+            # the palette.
+            if self.palette.isVisible():
+                self.palette.hide()
+                try:
+                    self.palette.closed.emit()
+                except Exception:
+                    pass
+            else:
+                self.palette.show_at_position()
             
     @Slot(Snippet)
     def on_snippet_selected(self, snippet: Snippet) -> None:

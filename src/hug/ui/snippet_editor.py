@@ -7,7 +7,7 @@ from PySide6.QtCore import Signal
 from PySide6.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QFormLayout,
     QLineEdit, QTextEdit, QComboBox, QPushButton,
-    QDialogButtonBox, QLabel, QMessageBox, QWidget
+    QDialogButtonBox, QLabel, QMessageBox, QWidget, QInputDialog
 )
 
 from hug.models.snippet import Snippet
@@ -34,8 +34,10 @@ def generate_snippet_id(name: str) -> str:
 
 class SnippetEditorDialog(QDialog):
     """Dialog for creating or editing a snippet."""
-    
+
     snippet_saved = Signal(Snippet, str)  # Emits (snippet, library_name)
+
+    NEW_LIBRARY_OPTION = "➕ New Library..."
     
     def __init__(
         self, 
@@ -108,6 +110,8 @@ class SnippetEditorDialog(QDialog):
     
     def _populate_libraries(self) -> None:
         """Fill library dropdown with available libraries."""
+        self.library_combo.blockSignals(True)
+
         for lib_name in self.library_manager.libraries.keys():
             self.library_combo.addItem(lib_name)
 
@@ -115,11 +119,58 @@ class SnippetEditorDialog(QDialog):
         if not self.library_manager.libraries:
             self.library_combo.addItem("(No libraries - will create 'My Snippets')")
 
+        self.library_combo.addItem(self.NEW_LIBRARY_OPTION)
+
         # If editing, select the snippet's library
         if self.editing_snippet and self.editing_snippet.library_name:
             idx = self.library_combo.findText(self.editing_snippet.library_name)
             if idx >= 0:
                 self.library_combo.setCurrentIndex(idx)
+
+        self._last_library_index = self.library_combo.currentIndex()
+        self.library_combo.blockSignals(False)
+        self.library_combo.currentIndexChanged.connect(self._on_library_index_changed)
+
+    def _on_library_index_changed(self, index: int) -> None:
+        """Handle selection of the '+ New Library' entry by prompting to create one."""
+        if self.library_combo.itemText(index) != self.NEW_LIBRARY_OPTION:
+            self._last_library_index = index
+            return
+
+        name, ok = QInputDialog.getText(
+            self, "New Library", "Library name (e.g., 'Ruby Basics'):"
+        )
+        name = name.strip() if ok else ""
+
+        if not name:
+            self.library_combo.setCurrentIndex(self._last_library_index)
+            return
+
+        if name in self.library_manager.libraries:
+            QMessageBox.warning(self, "Library Exists", f"A library named '{name}' already exists.")
+            self.library_combo.setCurrentIndex(self._last_library_index)
+            return
+
+        library = self.library_manager.create_library(name)
+        if library is None:
+            QMessageBox.warning(
+                self, "Error",
+                f"Failed to create library '{name}'. Check that a library path is configured in Settings."
+            )
+            self.library_combo.setCurrentIndex(self._last_library_index)
+            return
+
+        language, _ = QInputDialog.getText(
+            self, "New Library", "Language identifier (optional, e.g. 'ruby'):"
+        )
+        if language.strip():
+            library.language = language.strip()
+            library.save()
+
+        # Insert the new library before the "New Library..." entry and select it
+        insert_pos = self.library_combo.count() - 1
+        self.library_combo.insertItem(insert_pos, name)
+        self.library_combo.setCurrentIndex(insert_pos)
     
     def _populate_categories(self) -> None:
         """Fill category dropdown with existing categories."""

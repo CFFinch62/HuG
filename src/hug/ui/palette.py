@@ -124,11 +124,11 @@ class FloatingPalette(QWidget):
         self.tree.select_first_visible()
         
     def _on_snippet_selected(self, snippet: Snippet) -> None:
-        """Propagate signal and close."""
-        self.snippet_selected.emit(snippet)
+        """Close first so focus returns to the target window, then propagate."""
         if self.config.hide_on_selection:
             self.hide()
             self.closed.emit()
+        self.snippet_selected.emit(snippet)
             
     def _on_preview_requested(self, snippet: Snippet | None) -> None:
         if hasattr(self, 'preview'):
@@ -232,5 +232,3 @@ class FloatingPalette(QWidget):
                 self, "Error",
                 f"Failed to save snippet '{snippet.name}'."
             )
-            self.closed.emit()
-        super().focusOutEvent(event)

@@ -113,6 +113,10 @@ class HugApp(QObject):
                 except Exception:
                     pass
             else:
+                # Save the currently focused window before the palette
+                # steals focus, so insertion can restore focus to it
+                # (mirrors what the tray menu does on Linux via xdotool).
+                self.inserter.save_active_window()
                 self.palette.show_at_position()
             
     @Slot(Snippet)

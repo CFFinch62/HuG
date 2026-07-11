@@ -45,13 +45,19 @@ class SystemTray(QSystemTrayIcon):
         self.menu_about_to_show.emit()
         
     def _build_menu(self) -> None:
-        """Build context menu from current libraries."""
+        """Build context menu from current libraries, grouped by source folder."""
         self.menu.clear()
 
-        # 1. Libraries
-        for lib_name, library in self.library_manager.libraries.items():
-            lib_menu = self.menu.addMenu(lib_name)
-            self._populate_library_menu(lib_menu, library)
+        # 1. Libraries, grouped into labeled sections by the folder they were loaded from
+        grouped = self.library_manager.get_libraries_by_folder()
+        for i, (folder, libraries) in enumerate(grouped.items()):
+            if folder:
+                self.menu.addSection(folder.replace("_", " ").replace("-", " ").title())
+            elif i > 0:
+                self.menu.addSeparator()
+            for library in libraries:
+                lib_menu = self.menu.addMenu(library.name)
+                self._populate_library_menu(lib_menu, library)
 
         self.menu.addSeparator()
 
@@ -83,15 +89,21 @@ class SystemTray(QSystemTrayIcon):
     def _add_snippets_to_menu(self, menu: QMenu, snippets: list[Snippet]) -> None:
         """Add action items for snippets to a menu."""
         for snippet in snippets:
-            # We use a closure or partial to capture the snippet
-            # note: checked=False is default
             action = menu.addAction(snippet.name)
-            # Use default param to capture loop variable
-            action.triggered.connect(lambda checked=False, s=snippet: self._on_snippet_triggered(s))
+            # Capture only the ID/library name (default params bind the loop
+            # variable). The snippet itself is re-resolved at click time so
+            # edits made after the menu was built are always reflected.
+            action.triggered.connect(
+                lambda checked=False, sid=snippet.id, lib=snippet.library_name: self._on_snippet_triggered(sid, lib)
+            )
             action.setToolTip(snippet.description)
 
-    def _on_snippet_triggered(self, snippet: Snippet) -> None:
-        """Handle snippet selection."""
+    def _on_snippet_triggered(self, snippet_id: str, library_name: str) -> None:
+        """Handle snippet selection, looking up the current snippet data."""
+        snippet = self.library_manager.get_snippet(snippet_id, library_name)
+        if snippet is None:
+            logger.warning(f"Snippet '{snippet_id}' in '{library_name}' no longer exists")
+            return
         logger.info(f"Snippet selected: {snippet.name}")
         self.snippet_selected.emit(snippet)
         

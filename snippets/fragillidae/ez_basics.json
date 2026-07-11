@@ -1,0 +1,190 @@
+{
+  "name": "EZ Basics",
+  "description": "Common EZ (.ez) code templates and patterns",
+  "snippets": [
+    {
+      "id": "ez_comment",
+      "name": "Comment",
+      "category": "Comments",
+      "description": "Line and block comments",
+      "tags": ["comment"],
+      "content": "// single-line comment\n/* multi-line\n   comment */"
+    },
+    {
+      "id": "ez_variable",
+      "name": "Mutable Variable",
+      "category": "Variables",
+      "description": "Declare a mutable, typed variable",
+      "tags": ["variable", "mut"],
+      "content": "mut age int = 25\nmut name string = \"Alice\""
+    },
+    {
+      "id": "ez_const",
+      "name": "Constant",
+      "category": "Variables",
+      "description": "Declare an immutable constant",
+      "tags": ["const", "constant"],
+      "content": "const PI float = 3.14159"
+    },
+    {
+      "id": "ez_println",
+      "name": "Print / Interpolation",
+      "category": "Output",
+      "description": "Print with a trailing newline using string interpolation",
+      "tags": ["print", "output", "interpolation"],
+      "content": "println(\"age = ${age}\")"
+    },
+    {
+      "id": "ez_input",
+      "name": "Input",
+      "category": "Input",
+      "description": "Read a line from stdin",
+      "tags": ["input"],
+      "content": "mut line string = input()"
+    },
+    {
+      "id": "ez_if_or_otherwise",
+      "name": "If/Or/Otherwise",
+      "category": "Conditionals",
+      "description": "Conditional chain using EZ's or/otherwise keywords",
+      "tags": ["if", "conditional"],
+      "content": "if score >= 90 {\n    println(\"Grade: A\")\n} or score >= 80 {\n    println(\"Grade: B\")\n} otherwise {\n    println(\"Grade: F\")\n}"
+    },
+    {
+      "id": "ez_when",
+      "name": "When/Is (pattern match)",
+      "category": "Conditionals",
+      "description": "Pattern-matching switch over a value",
+      "tags": ["when", "is", "switch"],
+      "content": "when day {\n    is 1, 2, 3, 4, 5 { println(\"Weekday\") }\n    is 6, 7 { println(\"Weekend!\") }\n    default { println(\"Invalid day\") }\n}"
+    },
+    {
+      "id": "ez_for_range",
+      "name": "For/Range Loop",
+      "category": "Loops",
+      "description": "Loop over a numeric range (upper bound exclusive)",
+      "tags": ["loop", "for", "range"],
+      "content": "for i in range(1, 6) {\n    println(\"${i}\")\n}"
+    },
+    {
+      "id": "ez_for_each",
+      "name": "For Each",
+      "category": "Loops",
+      "description": "Iterate over an array with index and value",
+      "tags": ["loop", "for_each"],
+      "content": "for_each i, fruit in fruits {\n    println(\"${i}: ${fruit}\")\n}"
+    },
+    {
+      "id": "ez_as_long_as",
+      "name": "As Long As (while)",
+      "category": "Loops",
+      "description": "While-equivalent loop",
+      "tags": ["loop", "while", "as_long_as"],
+      "content": "mut n int = 5\nas_long_as n > 0 {\n    println(\"${n}\")\n    n--\n}"
+    },
+    {
+      "id": "ez_loop_infinite",
+      "name": "Infinite Loop",
+      "category": "Loops",
+      "description": "Loop until an explicit break",
+      "tags": ["loop", "break"],
+      "content": "loop {\n    mut x string = input()\n    if x == \"quit\" { break }\n}"
+    },
+    {
+      "id": "ez_function",
+      "name": "Function",
+      "category": "Functions",
+      "description": "Define a function with typed params and return",
+      "tags": ["function", "do"],
+      "content": "do add(a int, b int) -> int {\n    return a + b\n}"
+    },
+    {
+      "id": "ez_function_default_param",
+      "name": "Function with Default Param",
+      "category": "Functions",
+      "description": "Parameter with a default value",
+      "tags": ["function", "default"],
+      "content": "do greet(name string = \"World\") -> string {\n    return \"Hello, ${name}!\"\n}"
+    },
+    {
+      "id": "ez_named_returns",
+      "name": "Named/Multiple Returns",
+      "category": "Functions",
+      "description": "Function returning multiple named values",
+      "tags": ["function", "return"],
+      "content": "do swap(a int, b int) -> (x int, y int) {\n    x = b; y = a\n    return x, y\n}"
+    },
+    {
+      "id": "ez_array",
+      "name": "Array",
+      "category": "Data Structures",
+      "description": "Declare and index an array",
+      "tags": ["array"],
+      "content": "mut numbers [int] = {1, 2, 3, 4, 5}\nnumbers[0] = 100\nprintln(len(numbers))"
+    },
+    {
+      "id": "ez_map",
+      "name": "Map",
+      "category": "Data Structures",
+      "description": "Declare a map and access/set a key",
+      "tags": ["map"],
+      "content": "mut ages map[string:int] = {\"Alice\": 30, \"Bob\": 25}\nages[\"Alice\"] = 31"
+    },
+    {
+      "id": "ez_struct",
+      "name": "Struct",
+      "category": "Data Structures",
+      "description": "Define and instantiate a struct",
+      "tags": ["struct"],
+      "content": "const Person struct { name string; age int }\nmut alice Person = Person{ name: \"Alice\", age: 30 }\nalice.age = 31"
+    },
+    {
+      "id": "ez_enum",
+      "name": "Enum",
+      "category": "Data Structures",
+      "description": "Define and use an enum",
+      "tags": ["enum"],
+      "content": "const Color enum { RED; GREEN; BLUE }\nmut myColor Color = Color.RED\nif myColor == Color.RED { println(\"red\") }"
+    },
+    {
+      "id": "ez_string_ops",
+      "name": "String Operations",
+      "category": "Strings",
+      "description": "Common strings module functions",
+      "tags": ["string"],
+      "content": "strings.trim(text)\nstrings.upper(text)\nstrings.split(csv_data, \",\")\nstrings.join(parts, \" | \")\nstrings.contains(hello, \"world\")"
+    },
+    {
+      "id": "ez_error_return",
+      "name": "Error-returning Function",
+      "category": "Error Handling",
+      "description": "Functions that can fail return a (T, Error) tuple",
+      "tags": ["error"],
+      "content": "do parse_int(s string) -> (int, Error) {\n    if s == \"\" { return 0, error(\"empty string\") }\n    return 42, nil\n}\n\nmut val, err = parse_int(\"bad\")\nif err != nil {\n    println(\"Error: ${err}\")\n    return\n}"
+    },
+    {
+      "id": "ez_or_return",
+      "name": "Or Return",
+      "category": "Error Handling",
+      "description": "Shorthand for propagating an error up the call stack",
+      "tags": ["error", "or_return"],
+      "content": "do wrapper() -> (int, Error) {\n    mut val int = might_fail(true) or_return\n    return val, nil\n}"
+    },
+    {
+      "id": "ez_import",
+      "name": "Import",
+      "category": "Modules",
+      "description": "Import standard library modules and a local file",
+      "tags": ["import"],
+      "content": "import @strings, @math\nimport \"./helpers.ez\""
+    },
+    {
+      "id": "ez_operators",
+      "name": "Operators Reference",
+      "category": "Reference",
+      "description": "Arithmetic, comparison, logical, and membership operators",
+      "tags": ["operators"],
+      "content": "// Arithmetic: + - * / %\n// Comparison: == != < > <= >=\n// Logical:    && || !\n// Membership: in / not_in\n// Incr/decr:  ++ --"
+    }
+  ]
+}

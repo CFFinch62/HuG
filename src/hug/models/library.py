@@ -19,7 +19,8 @@ class SnippetLibrary:
     version: str = "1.0"
     author: str = ""
     source_path: Path | None = None
-    
+    folder: str = ""  # Subfolder (relative to its library path root) the file lives in
+
     @classmethod
     def from_json(cls, path: Path) -> "SnippetLibrary":
         """Load library from JSON file."""
@@ -144,22 +145,65 @@ class LibraryManager:
             for file_path in files:
                 try:
                     lib = SnippetLibrary.from_json(file_path)
+                    lib.folder = self._relative_folder(file_path, path)
                     self.libraries[lib.name] = lib
                     logger.info(f"Loaded library {lib.name} with {len(lib.snippets)} snippets")
                 except Exception:
                     # Already logged in from_json
                     continue
+
+    @staticmethod
+    def _relative_folder(file_path: Path, base_path: Path) -> str:
+        """Return the immediate subfolder of base_path containing file_path, or "" if none."""
+        if not base_path.is_dir():
+            return ""
+        try:
+            relative = file_path.relative_to(base_path)
+        except ValueError:
+            return ""
+        return relative.parts[0] if len(relative.parts) > 1 else ""
         
     def reload(self) -> None:
         """Clear and reload all libraries."""
         self.load_all()
         
+    def get_libraries_by_folder(self) -> dict[str, list[SnippetLibrary]]:
+        """
+        Group loaded libraries by the subfolder they were loaded from.
+        Named folders come first (alphabetically); libraries with no
+        subfolder (loaded directly from a library path root) are grouped
+        under the "" key, listed last.
+        """
+        grouped: dict[str, list[SnippetLibrary]] = {}
+        for library in self.libraries.values():
+            grouped.setdefault(library.folder, []).append(library)
+
+        for libraries in grouped.values():
+            libraries.sort(key=lambda lib: lib.name)
+
+        ordered: dict[str, list[SnippetLibrary]] = {}
+        for folder in sorted(f for f in grouped if f):
+            ordered[folder] = grouped[folder]
+        if "" in grouped:
+            ordered[""] = grouped[""]
+        return ordered
+
     def get_all_snippets(self) -> list[Snippet]:
         """Return flat list of all snippets."""
         all_snippets = []
         for lib in self.libraries.values():
             all_snippets.extend(lib.snippets)
         return all_snippets
+
+    def get_snippet(self, snippet_id: str, library_name: str) -> Snippet | None:
+        """Look up the current snippet object by ID and library name."""
+        library = self.libraries.get(library_name)
+        if not library:
+            return None
+        for snippet in library.snippets:
+            if snippet.id == snippet_id:
+                return snippet
+        return None
         
     def search(self, query: str) -> list[Snippet]:
         """Search all snippets by query string."""

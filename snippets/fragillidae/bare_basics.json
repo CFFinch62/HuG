@@ -1,0 +1,142 @@
+{
+  "name": "BARE Basics",
+  "description": "Common BARE code templates and patterns",
+  "snippets": [
+    {
+      "id": "bare_comment",
+      "name": "Comment",
+      "category": "Comments",
+      "description": "Line comment",
+      "tags": ["comment"],
+      "content": "# This is a comment"
+    },
+    {
+      "id": "bare_variable",
+      "name": "Variable Assignment",
+      "category": "Variables",
+      "description": "Create/assign a variable (no declaration keyword)",
+      "tags": ["variable", "assignment"],
+      "content": "name = \"value\"\ncount = 0"
+    },
+    {
+      "id": "bare_print",
+      "name": "Print",
+      "category": "Output",
+      "description": "Print a value or concatenated string",
+      "tags": ["print", "output"],
+      "content": "print \"Hello, \" + name + \"!\""
+    },
+    {
+      "id": "bare_input",
+      "name": "Input",
+      "category": "Input",
+      "description": "Read a line of input from the user",
+      "tags": ["input"],
+      "content": "response = input(\"Enter a value: \")"
+    },
+    {
+      "id": "bare_if_else",
+      "name": "If/Else",
+      "category": "Conditionals",
+      "description": "Conditional statement (nest additional ifs inside else for elseif behavior)",
+      "tags": ["if", "conditional"],
+      "content": "if condition\n    \nelse\n    \nend"
+    },
+    {
+      "id": "bare_if_nested",
+      "name": "Nested If (elseif style)",
+      "category": "Conditionals",
+      "description": "BARE has no elseif; nest an if inside else to chain conditions",
+      "tags": ["if", "elseif", "nested"],
+      "content": "if guess < secret\n    print \"Too low!\"\nelse\n    if guess > secret\n        print \"Too high!\"\n    else\n        print \"Correct!\"\n    end\nend"
+    },
+    {
+      "id": "bare_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "The only loop construct in BARE",
+      "tags": ["loop", "while"],
+      "content": "i = 0\nwhile i < 5\n    print i\n    i = i + 1\nend"
+    },
+    {
+      "id": "bare_sub",
+      "name": "Sub (Function)",
+      "category": "Functions",
+      "description": "Define a reusable block of code with parameters and a return value",
+      "tags": ["function", "sub"],
+      "content": "sub name(param)\n    return param\nend"
+    },
+    {
+      "id": "bare_sub_recursive",
+      "name": "Recursive Sub",
+      "category": "Functions",
+      "description": "A sub that calls itself",
+      "tags": ["function", "recursion"],
+      "content": "sub factorial(n)\n    if n <= 1\n        return 1\n    else\n        return n * factorial(n - 1)\n    end\nend"
+    },
+    {
+      "id": "bare_list",
+      "name": "List Create/Access",
+      "category": "Data Structures",
+      "description": "Create a list, index it, and mutate an element",
+      "tags": ["list", "array"],
+      "content": "scores = [88, 92, 75]\nprint scores[0]\nscores[0] = 100"
+    },
+    {
+      "id": "bare_list_append",
+      "name": "Append to List",
+      "category": "Data Structures",
+      "description": "Grow a list and get its length",
+      "tags": ["list", "append", "len"],
+      "content": "append(scores, 60)\nprint len(scores)"
+    },
+    {
+      "id": "bare_string_concat",
+      "name": "String Concatenation",
+      "category": "Strings",
+      "description": "Concatenate strings and numbers with + (numbers auto-convert)",
+      "tags": ["string", "concatenation"],
+      "content": "print \"Total: \" + str(total)"
+    },
+    {
+      "id": "bare_string_reverse",
+      "name": "Reverse a String",
+      "category": "Strings",
+      "description": "Build a new string by walking an index backwards",
+      "tags": ["string", "reverse", "sub"],
+      "content": "sub reverse(word)\n    result = \"\"\n    i = len(word) - 1\n    while i >= 0\n        result = result + word[i]\n        i = i - 1\n    end\n    return result\nend"
+    },
+    {
+      "id": "bare_operators",
+      "name": "Operators Reference",
+      "category": "Reference",
+      "description": "Arithmetic, comparison, and logical operators",
+      "tags": ["operators"],
+      "content": "# Arithmetic:  +  -  *  /  %  ^\n# Comparison:  ==  !=  <  >  <=  >=\n# Logical:     and  or  not"
+    },
+    {
+      "id": "bare_random",
+      "name": "Random Number",
+      "category": "Built-ins",
+      "description": "Generate a random number between min and max",
+      "tags": ["random", "builtin"],
+      "content": "n = random(1, 100)"
+    },
+    {
+      "id": "bare_round",
+      "name": "Round a Number",
+      "category": "Built-ins",
+      "description": "Round a number to a given number of decimals",
+      "tags": ["round", "builtin"],
+      "content": "value = round(3.14159, 2)"
+    },
+    {
+      "id": "bare_duration",
+      "name": "Code Timer",
+      "category": "Time",
+      "description": "A simple code timer to measure the execution time of a block of code.",
+      "tags": ["timer", "duration", "code timing"],
+      "content": "start = time()\nfinish = time()\nex_time = round((finish-start),0)\nif ex_time == 0\n    print \"Code execution took less then a second.\"\nelse\n    print \"Code execution took \" + ex_time + \" seconds.\"\nend"
+    }
+  ]
+}

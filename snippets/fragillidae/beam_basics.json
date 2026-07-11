@@ -1,0 +1,206 @@
+{
+  "name": "BEAM Basics",
+  "description": "Common BEAM (.bas) code templates and patterns",
+  "snippets": [
+    {
+      "id": "beam_comment",
+      "name": "Comment",
+      "category": "Comments",
+      "description": "Any of the four interchangeable comment styles",
+      "tags": ["comment"],
+      "content": "rem this is a comment\n' so is this\n# and this (line start only)\n// and this"
+    },
+    {
+      "id": "beam_variable",
+      "name": "Variable Assignment",
+      "category": "Variables",
+      "description": "Numeric and string variables (string names end in $)",
+      "tags": ["variable", "assignment"],
+      "content": "x = 42\nname$ = \"Alice\""
+    },
+    {
+      "id": "beam_print",
+      "name": "Print",
+      "category": "Output",
+      "description": "Print values, comma-separated; trailing ; suppresses the newline",
+      "tags": ["print", "output"],
+      "content": "print \"foo\", a$, b\nprint \"no newline\";"
+    },
+    {
+      "id": "beam_input",
+      "name": "Input",
+      "category": "Input",
+      "description": "Read numeric or string input with an optional prompt",
+      "tags": ["input"],
+      "content": "input \"Enter your name: \" a$"
+    },
+    {
+      "id": "beam_line_input",
+      "name": "Line Input",
+      "category": "Input",
+      "description": "Read a whole line, including spaces",
+      "tags": ["input", "line"],
+      "content": "line input \"Enter your name: \" a$\nprint \"Hello \", a$"
+    },
+    {
+      "id": "beam_if_else",
+      "name": "If/Elsif/Else",
+      "category": "Conditionals",
+      "description": "Multi-line conditional block",
+      "tags": ["if", "conditional"],
+      "content": "if (a = 1) then\n  print \"one\"\nelsif (a = 2)\n  print \"two\"\nelse\n  print \"other\"\nendif"
+    },
+    {
+      "id": "beam_if_single_line",
+      "name": "Single-line If",
+      "category": "Conditionals",
+      "description": "Short-form if with no then/endif (top-level only)",
+      "tags": ["if", "conditional"],
+      "content": "if (a <= 1 or a >= 4) error \"Wrong, wrong !\""
+    },
+    {
+      "id": "beam_switch",
+      "name": "Switch/Case",
+      "category": "Conditionals",
+      "description": "Multi-way branch",
+      "tags": ["switch", "case"],
+      "content": "switch n\n  case 0: print \"zero\": break\n  case 1: print \"one\": break\n  default: print \"other\"\nend switch"
+    },
+    {
+      "id": "beam_for",
+      "name": "For Loop",
+      "category": "Loops",
+      "description": "For/to/step/next loop",
+      "tags": ["loop", "for"],
+      "content": "for i = 1 to 10 step 1\n  print i\nnext i"
+    },
+    {
+      "id": "beam_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "While/wend loop",
+      "tags": ["loop", "while"],
+      "content": "i = 0\nwhile i < 10\n  print i\n  i = i + 1\nwend"
+    },
+    {
+      "id": "beam_do_loop",
+      "name": "Do/Loop",
+      "category": "Loops",
+      "description": "Infinite loop with break",
+      "tags": ["loop", "do", "break"],
+      "content": "do\n  a = a + 1\n  print a\n  if (a > 100) break\nloop"
+    },
+    {
+      "id": "beam_repeat_until",
+      "name": "Repeat/Until",
+      "category": "Loops",
+      "description": "Loop that executes at least once",
+      "tags": ["loop", "repeat", "until"],
+      "content": "repeat\n  x = x + 1\n  print x\nuntil x = 10"
+    },
+    {
+      "id": "beam_sub",
+      "name": "Sub (numeric return)",
+      "category": "Functions",
+      "description": "Return a value by assigning the sub's own name",
+      "tags": ["function", "sub"],
+      "content": "sub is_prime(a)\n  local b\n  for b = 2 to sqrt(a)\n    if (frac(a / b) = 0) return false\n  next b\n  return true\nend sub"
+    },
+    {
+      "id": "beam_sub_string",
+      "name": "Sub (string return)",
+      "category": "Functions",
+      "description": "A sub whose name ends in $ returns a string",
+      "tags": ["function", "sub", "string"],
+      "content": "sub shout$(text$)\n  shout$ = upper$(text$) + \"!\"\nend sub"
+    },
+    {
+      "id": "beam_static_local",
+      "name": "Static & Local Vars",
+      "category": "Functions",
+      "description": "local scopes a variable to the sub; static persists it across calls",
+      "tags": ["local", "static", "scope"],
+      "content": "sub counter()\n  static total\n  local step\n  total = total + 1\n  step = step + 1\n  print total, step\nend sub"
+    },
+    {
+      "id": "beam_array",
+      "name": "Array",
+      "category": "Data Structures",
+      "description": "Declare and use a numeric or string array",
+      "tags": ["array", "dim"],
+      "content": "dim scores(10)\ndim names$(20)\nscores(0) = 100\nnames$(0) = \"Alice\""
+    },
+    {
+      "id": "beam_array_pass",
+      "name": "Pass Array to Sub",
+      "category": "Data Structures",
+      "description": "Pass a whole array by reference using empty parens",
+      "tags": ["array", "sub"],
+      "content": "sub print_words(w$())\n  local i\n  for i = 1 to arraysize(w$(), 1)\n    print w$(i), \" \";\n  next i\nend sub\nprint_words(words$())"
+    },
+    {
+      "id": "beam_string_ops",
+      "name": "String Operations",
+      "category": "Strings",
+      "description": "Common string built-ins",
+      "tags": ["string"],
+      "content": "full$ = first$ + \" \" + last$\nprint left$(full$, 2)\nprint right$(full$, 2)\nprint mid$(full$, 2, 1)\nprint upper$(full$)\nprint len(full$)"
+    },
+    {
+      "id": "beam_error",
+      "name": "Error Statement",
+      "category": "Error Handling",
+      "description": "Abort the program with a message",
+      "tags": ["error"],
+      "content": "if (a < 1 or a > 10) error \"Value out of range\""
+    },
+    {
+      "id": "beam_label_goto",
+      "name": "Label/Goto",
+      "category": "Control Flow",
+      "description": "Jump to a label (prefer sub/end sub for new code)",
+      "tags": ["goto", "label"],
+      "content": "label mainloop\n  print \"looping\"\ngoto mainloop"
+    },
+    {
+      "id": "beam_gosub",
+      "name": "Gosub/Return",
+      "category": "Control Flow",
+      "description": "Call a labeled block and return",
+      "tags": ["gosub", "return", "label"],
+      "content": "gosub my_subroutine\n...\nend\n\nlabel my_subroutine\n  print \"in subroutine\"\nreturn"
+    },
+    {
+      "id": "beam_file_io",
+      "name": "File Read/Write",
+      "category": "File I/O",
+      "description": "Open, read/write, and close a file",
+      "tags": ["file", "io"],
+      "content": "open \"data.txt\" for reading as #1\nwhile not eof(#1)\n  line input #1, row$\n  print row$\nwend\nclose #1"
+    },
+    {
+      "id": "beam_open_window",
+      "name": "Open Graphics Window",
+      "category": "Graphics",
+      "description": "Open a drawing window and draw a filled circle",
+      "tags": ["graphics", "window"],
+      "content": "open window 400, 400\ncolor 255, 0, 0\nfill circle 200, 200, 50"
+    },
+    {
+      "id": "beam_gui_window",
+      "name": "BEAM GUI Window",
+      "category": "GUI",
+      "description": "Open a BEAM widget window with a label and a close button",
+      "tags": ["gui", "beam_open", "beam_button"],
+      "content": "win = beam_open(400, 200, \"Hello BEAM\")\nwhile beam_running(win)\n  beam_begin(win)\n    beam_label(\"Hello, World!\")\n    if beam_button(\"Close\", 80, 30) then\n      beam_close(win)\n    end if\n  beam_end(win)\nwend"
+    },
+    {
+      "id": "beam_operators",
+      "name": "Operators Reference",
+      "category": "Reference",
+      "description": "Arithmetic, comparison, and logical operators",
+      "tags": ["operators"],
+      "content": "' Arithmetic:  +  -  *  /  ^  mod\n' Comparison:  =  <>  <  >  <=  >=  ==\n' Logical:     and  or  not"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "name": "PLAIN Basics",
+  "description": "Common PLAIN (.plain) code templates and patterns",
+  "snippets": [
+    {
+      "id": "plain_comment",
+      "name": "Comment",
+      "category": "Comments",
+      "description": "Line comment, usable inline",
+      "tags": ["comment"],
+      "content": "rem: This is a comment\nvar count = 10    rem: inline comment"
+    },
+    {
+      "id": "plain_comment_block",
+      "name": "Multi-line Comment",
+      "category": "Comments",
+      "description": "Indentation-scoped block comment",
+      "tags": ["comment", "block"],
+      "content": "note:\n    This comment spans\n    multiple lines."
+    },
+    {
+      "id": "plain_variable",
+      "name": "Variable Assignment",
+      "category": "Variables",
+      "description": "Declare a variable, then reassign it",
+      "tags": ["variable"],
+      "content": "var strName = \"World\"\nstrName = \"Everyone\""
+    },
+    {
+      "id": "plain_variable_typed",
+      "name": "Typed Variable",
+      "category": "Variables",
+      "description": "Explicit type annotation on declaration",
+      "tags": ["variable", "type"],
+      "content": "var count as integer = 0\nvar price as float = 9.99"
+    },
+    {
+      "id": "plain_const",
+      "name": "Constant",
+      "category": "Variables",
+      "description": "Declare an immutable, fixed value",
+      "tags": ["const", "fxd"],
+      "content": "fxd MAX_COUNT as int = 10"
+    },
+    {
+      "id": "plain_display",
+      "name": "Display",
+      "category": "Output",
+      "description": "Print a value, string interpolation with v\"...\"",
+      "tags": ["display", "output"],
+      "content": "display(\"Hello, \" & strName & \"!\")\ndisplay(v\"Hello, {strName}!\")"
+    },
+    {
+      "id": "plain_input",
+      "name": "Get Input",
+      "category": "Input",
+      "description": "Prompt and read a value, converting type as needed",
+      "tags": ["input", "get"],
+      "content": "var strName = get(\"What is your name? \")\nvar intAge = to_int(get(\"How old are you? \"))"
+    },
+    {
+      "id": "plain_if_else",
+      "name": "If/Else",
+      "category": "Conditionals",
+      "description": "Binary conditional (nest ifs in else for elseif behavior)",
+      "tags": ["if", "conditional"],
+      "content": "if intTemperature > 80\n    display(\"It's hot outside!\")\nelse\n    display(\"The weather is pleasant.\")"
+    },
+    {
+      "id": "plain_choose",
+      "name": "Choose/Choice",
+      "category": "Conditionals",
+      "description": "Multi-way branching on a value",
+      "tags": ["choose", "choice", "switch"],
+      "content": "choose strDay\n    choice \"Monday\"\n        display(\"Start of the work week!\")\n    choice \"Friday\"\n        display(\"Almost the weekend!\")\n    default\n        display(\"Just a regular day.\")"
+    },
+    {
+      "id": "plain_loop_from_to",
+      "name": "Counting Loop",
+      "category": "Loops",
+      "description": "Loop a variable from a start to an end value, with optional step",
+      "tags": ["loop", "for"],
+      "content": "loop i from 1 to 5\n    display(\"Count: \" & i)\n\nloop i from 10 to 1 step -1\n    display(i & \"...\")"
+    },
+    {
+      "id": "plain_loop_foreach",
+      "name": "For-each Loop",
+      "category": "Loops",
+      "description": "Iterate over a list",
+      "tags": ["loop", "for each"],
+      "content": "loop fruit in fruits\n    display(\"I like \" & fruit & \"!\")"
+    },
+    {
+      "id": "plain_loop_while",
+      "name": "While-style Loop",
+      "category": "Loops",
+      "description": "Condition-only loop",
+      "tags": ["loop", "while"],
+      "content": "loop count < 5\n    display(count)\n    count = count + 1"
+    },
+    {
+      "id": "plain_loop_infinite",
+      "name": "Infinite Loop",
+      "category": "Loops",
+      "description": "Bare loop with an explicit exit",
+      "tags": ["loop", "exit"],
+      "content": "loop\n    work()\n    if done\n        exit"
+    },
+    {
+      "id": "plain_task_function",
+      "name": "Task (Function)",
+      "category": "Functions",
+      "description": "A task that computes and delivers a value",
+      "tags": ["task", "function", "deliver"],
+      "content": "task Add using (a, b)\n    deliver a + b"
+    },
+    {
+      "id": "plain_task_procedure",
+      "name": "Task (Procedure)",
+      "category": "Functions",
+      "description": "A task with side effects and no return value",
+      "tags": ["task", "procedure"],
+      "content": "task Greet with (name)\n    display(\"Greetings, \" & name & \"!\")"
+    },
+    {
+      "id": "plain_task_noargs",
+      "name": "Task (No Args)",
+      "category": "Functions",
+      "description": "A task with no parameters and no return value",
+      "tags": ["task"],
+      "content": "task Main()\n    display(\"Hello, World!\")"
+    },
+    {
+      "id": "plain_list",
+      "name": "List",
+      "category": "Data Structures",
+      "description": "Create, index, and mutate a list",
+      "tags": ["list", "array"],
+      "content": "var lstColors = [\"red\", \"green\", \"blue\"]\ndisplay(\"First color: \" & lstColors[0])\nappend(lstColors, \"yellow\")"
+    },
+    {
+      "id": "plain_table",
+      "name": "Table",
+      "category": "Data Structures",
+      "description": "Create a table (dictionary) and access values",
+      "tags": ["table", "dictionary", "map"],
+      "content": "var tblPerson = {\"name\": \"Alice\", \"age\": 30, \"city\": \"Portland\"}\ndisplay(\"Name: \" & tblPerson[\"name\"])\ntblPerson[\"email\"] = \"alice@example.com\""
+    },
+    {
+      "id": "plain_record",
+      "name": "Record",
+      "category": "Data Structures",
+      "description": "Define and instantiate a custom record type",
+      "tags": ["record", "type"],
+      "content": "record Student:\n    name as string\n    age as integer = 18\n    grade as string = \"A\"\n\nvar student1 = Student(name: \"Alice\", age: 20, grade: \"A\")"
+    },
+    {
+      "id": "plain_string_concat",
+      "name": "String Concatenation",
+      "category": "Strings",
+      "description": "Join strings with & and use interpolation",
+      "tags": ["string", "concatenation"],
+      "content": "var greeting = \"Hello\" & \" \" & \"World\"\nvar msg = v\"Hello {name}, you are {age} years old\""
+    },
+    {
+      "id": "plain_error_handling",
+      "name": "Attempt/Handle/Ensure",
+      "category": "Error Handling",
+      "description": "Try a block, handle an error, and always run cleanup",
+      "tags": ["attempt", "handle", "ensure", "error"],
+      "content": "attempt\n    display(\"Working...\")\n    abort \"Something went wrong\"\nhandle err as string\n    display(\"Error was caught: \" & err)\nensure\n    display(\"Cleanup complete.\")"
+    },
+    {
+      "id": "plain_import",
+      "name": "Import Modules",
+      "category": "Modules",
+      "description": "Import modules and tasks with a use: block",
+      "tags": ["use", "import", "modules"],
+      "content": "use:\n    modules:\n        utils\n        io.files"
+    },
+    {
+      "id": "plain_swap",
+      "name": "Swap",
+      "category": "Operators",
+      "description": "Swap the values of two variables",
+      "tags": ["swap"],
+      "content": "swap a, b"
+    },
+    {
+      "id": "plain_operators",
+      "name": "Operators Reference",
+      "category": "Reference",
+      "description": "Arithmetic, string, comparison, and logical operators",
+      "tags": ["operators"],
+      "content": "rem: Arithmetic: + - * / // % **\nrem: String:     & (concatenation)\nrem: Comparison: == != < > <= >=\nrem: Logical:    and or not"
+    }
+  ]
+}

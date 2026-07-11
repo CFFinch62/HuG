@@ -1,0 +1,182 @@
+{
+  "name": "STEPS Basics",
+  "description": "Common STEPS (.building/.step) code templates and patterns",
+  "snippets": [
+    {
+      "id": "steps_comment",
+      "name": "Comment",
+      "category": "Comments",
+      "description": "Single-line comment",
+      "tags": ["comment"],
+      "content": "note: This is a comment"
+    },
+    {
+      "id": "steps_comment_block",
+      "name": "Block Comment",
+      "category": "Comments",
+      "description": "Multi-line comment block",
+      "tags": ["comment", "block"],
+      "content": "note block:\n    This comment spans\n    multiple lines.\nend note"
+    },
+    {
+      "id": "steps_variable",
+      "name": "Variable Assignment",
+      "category": "Variables",
+      "description": "Create/assign a variable",
+      "tags": ["variable", "set"],
+      "content": "set age to 25\nset first_name to \"Alice\""
+    },
+    {
+      "id": "steps_declare",
+      "name": "Typed Declaration",
+      "category": "Variables",
+      "description": "Declare a typed variable inside a step or riser",
+      "tags": ["declare", "type"],
+      "content": "declare:\n    count as number\n    message as text\n    score as number fixed"
+    },
+    {
+      "id": "steps_type_convert",
+      "name": "Type Conversion",
+      "category": "Variables",
+      "description": "Convert a value to another type with as",
+      "tags": ["as", "convert", "type"],
+      "content": "set num to text_num as number\ndisplay pi as decimal(2)"
+    },
+    {
+      "id": "steps_display",
+      "name": "Display",
+      "category": "Output",
+      "description": "Print a value with a trailing newline",
+      "tags": ["display", "output"],
+      "content": "display \"Hello, World!\""
+    },
+    {
+      "id": "steps_indicate",
+      "name": "Indicate",
+      "category": "Output",
+      "description": "Print without a trailing newline (progress bars, prompts)",
+      "tags": ["indicate", "output"],
+      "content": "indicate \"Loading...\""
+    },
+    {
+      "id": "steps_input",
+      "name": "Input",
+      "category": "Input",
+      "description": "Read raw or typed input from the user",
+      "tags": ["input"],
+      "content": "set name to input\nset age to input as number"
+    },
+    {
+      "id": "steps_if_otherwise",
+      "name": "If/Otherwise If/Otherwise",
+      "category": "Conditionals",
+      "description": "Conditional chain using worded comparisons",
+      "tags": ["if", "otherwise", "conditional"],
+      "content": "if age is less than 13\n    display \"You are a child.\"\notherwise if age is less than 20\n    display \"You are a teenager.\"\notherwise\n    display \"You are an adult.\""
+    },
+    {
+      "id": "steps_repeat_times",
+      "name": "Repeat N Times",
+      "category": "Loops",
+      "description": "Fixed-count loop",
+      "tags": ["loop", "repeat"],
+      "content": "repeat 5 times\n    display (counter as text)\n    set counter to counter + 1"
+    },
+    {
+      "id": "steps_repeat_while",
+      "name": "Repeat While",
+      "category": "Loops",
+      "description": "Condition-based loop",
+      "tags": ["loop", "while"],
+      "content": "repeat while countdown is greater than 0\n    display (countdown as text)\n    set countdown to countdown - 1"
+    },
+    {
+      "id": "steps_repeat_foreach",
+      "name": "Repeat For Each",
+      "category": "Loops",
+      "description": "Iterate over a list",
+      "tags": ["loop", "for each"],
+      "content": "repeat for each fruit in fruits\n    display \"- \" added to fruit"
+    },
+    {
+      "id": "steps_step",
+      "name": "Step (Function)",
+      "category": "Functions",
+      "description": "Define a step with inputs, a return value, and a body",
+      "tags": ["step", "function"],
+      "content": "step: calculate_tax\n    belongs to: calculations\n    expects: amount, rate\n    returns: tax\n\n    do:\n        set tax to amount * (rate / 100)\n        return tax"
+    },
+    {
+      "id": "steps_riser",
+      "name": "Riser (Private Helper)",
+      "category": "Functions",
+      "description": "A private helper function nested inside a step",
+      "tags": ["riser", "helper"],
+      "content": "riser: calculate_percentage\n    expects: value, pct\n    returns: result\n\n    do:\n        set result to value * (pct / 100)\n        return result"
+    },
+    {
+      "id": "steps_call",
+      "name": "Call a Step",
+      "category": "Functions",
+      "description": "Call a step and store its result",
+      "tags": ["call", "storing"],
+      "content": "call calculate_tax with amount, rate storing result in tax"
+    },
+    {
+      "id": "steps_building",
+      "name": "Building (Program)",
+      "category": "Structure",
+      "description": "Top-level program entry with floors and steps",
+      "tags": ["building", "floor", "structure"],
+      "content": "building: price_calculator\n    note: Calculate the final price with discount\n\n    floors:\n        floor: calculations\n            step: calculate_subtotal\n            step: apply_discount\n\n    display \"Enter price: \"\n    set price to input as number\n    exit"
+    },
+    {
+      "id": "steps_list",
+      "name": "List",
+      "category": "Data Structures",
+      "description": "Create, index, and mutate a list",
+      "tags": ["list", "array"],
+      "content": "set numbers to [10, 20, 30, 40, 50]\ndisplay \"First number: \" added to (numbers[0] as text)\nadd \"milk\" to shopping_list\nremove \"bread\" from shopping_list"
+    },
+    {
+      "id": "steps_table",
+      "name": "Table",
+      "category": "Data Structures",
+      "description": "Create a table (dictionary) and access/set a value",
+      "tags": ["table", "dictionary", "map"],
+      "content": "set person to [\"name\": \"Alice\", \"age\": 25, \"city\": \"Boston\"]\nset person[\"age\"] to 26"
+    },
+    {
+      "id": "steps_string_ops",
+      "name": "String Operations",
+      "category": "Strings",
+      "description": "Concatenate and inspect text",
+      "tags": ["string", "added to"],
+      "content": "set greeting to \"Hello, \" added to name added to \"!\"\nset len to length of greeting\nset has_world to greeting contains \"World\""
+    },
+    {
+      "id": "steps_error_handling",
+      "name": "Attempt/Unsuccessful/Continue",
+      "category": "Error Handling",
+      "description": "Attempt a risky action, handle failure, then always continue",
+      "tags": ["attempt", "unsuccessful", "error"],
+      "content": "attempt:\n    set user_input to input as number\n    display \"You entered: \" added to (user_input as text)\nif unsuccessful:\n    display \"Oops! That wasn't a valid number.\"\n    display \"The error was: \" added to problem_message\n    set user_input to 0\nthen continue:\n    display \"Moving on with user_input = \" added to (user_input as text)"
+    },
+    {
+      "id": "steps_operators",
+      "name": "Operators Reference",
+      "category": "Reference",
+      "description": "Worded comparison, boolean, and text operators",
+      "tags": ["operators"],
+      "content": "note: Arithmetic: + - * / % (or modulo)\nnote: Comparison: is equal to / equals / is greater than / is less than or equal to\nnote: Logical:    and / or / not\nnote: Text:       added to (concatenation)"
+    },
+    {
+      "id": "steps_builtins",
+      "name": "Common Built-ins",
+      "category": "Built-ins",
+      "description": "Frequently used standard library calls",
+      "tags": ["builtin", "call"],
+      "content": "call round with n storing result in r\ncall random_int with 1, 100 storing result in rnd\ncall type of x storing result in t"
+    }
+  ]
+}

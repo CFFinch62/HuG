@@ -37,6 +37,18 @@ class LibraryItem(QTreeWidgetItem):
         self.setFont(0, font)
 
 
+class FolderItem(QTreeWidgetItem):
+    """Tree item representing a source folder grouping multiple libraries."""
+    def __init__(self, name: str):
+        display = name.replace("_", " ").replace("-", " ").title()
+        super().__init__([display])
+        self.setExpanded(True)
+        font = self.font(0)
+        font.setBold(True)
+        font.setUnderline(True)
+        self.setFont(0, font)
+
+
 class SnippetTree(QTreeWidget):
     snippet_selected = Signal(Snippet)
     preview_snippet = Signal(object)  # object can be Snippet or None
@@ -75,30 +87,45 @@ class SnippetTree(QTreeWidget):
         menu.exec(self.mapToGlobal(position))
         
     def refresh(self) -> None:
-        """Rebuild tree from libraries."""
+        """Rebuild tree from libraries, grouped by source folder."""
         self.clear()
-        
-        for lib_name, library in self.library_manager.libraries.items():
-            lib_item = LibraryItem(library)
+
+        grouped = self.library_manager.get_libraries_by_folder()
+        for folder, libraries in grouped.items():
+            if folder:
+                parent = FolderItem(folder)
+                self.addTopLevelItem(parent)
+            else:
+                parent = None
+
+            for library in libraries:
+                self._add_library(library, parent)
+
+    def _add_library(self, library: SnippetLibrary, parent: QTreeWidgetItem | None) -> None:
+        """Add a library (and its categories/snippets) under parent, or as a top-level item."""
+        lib_item = LibraryItem(library)
+        if parent is not None:
+            parent.addChild(lib_item)
+        else:
             self.addTopLevelItem(lib_item)
-            
-            categories = library.get_categories()
-            
-            # Map categories to items
-            cat_items = {}
-            for cat in categories:
-                cat_item = CategoryItem(cat)
-                lib_item.addChild(cat_item)
-                cat_items[cat] = cat_item
-                
-            # Add snippets
-            for snippet in library.snippets:
-                snip_item = SnippetItem(snippet)
-                if snippet.category:
-                    cat_items[snippet.category].addChild(snip_item)
-                else:
-                    lib_item.addChild(snip_item)
-                    
+
+        categories = library.get_categories()
+
+        # Map categories to items
+        cat_items = {}
+        for cat in categories:
+            cat_item = CategoryItem(cat)
+            lib_item.addChild(cat_item)
+            cat_items[cat] = cat_item
+
+        # Add snippets
+        for snippet in library.snippets:
+            snip_item = SnippetItem(snippet)
+            if snippet.category:
+                cat_items[snippet.category].addChild(snip_item)
+            else:
+                lib_item.addChild(snip_item)
+
     def filter(self, query: str) -> None:
         """Filter items by query text."""
         query = query.lower()

@@ -1,0 +1,222 @@
+{
+  "name": "FORGE Basics",
+  "description": "Common FORGE (.fg) code templates and patterns",
+  "snippets": [
+    {
+      "id": "forge_comment",
+      "name": "Comment",
+      "category": "Comments",
+      "description": "Line comment (no block comments in FORGE)",
+      "tags": ["comment"],
+      "content": "# This is a comment"
+    },
+    {
+      "id": "forge_variable",
+      "name": "Variable",
+      "category": "Variables",
+      "description": "Declare a typed, mutable variable",
+      "tags": ["variable"],
+      "content": "var x: int = 42\nvar name: str = \"FORGE\""
+    },
+    {
+      "id": "forge_const",
+      "name": "Constant",
+      "category": "Variables",
+      "description": "Declare an immutable constant",
+      "tags": ["const"],
+      "content": "const MAX_RETRIES: int = 5"
+    },
+    {
+      "id": "forge_type_alias",
+      "name": "Type Alias",
+      "category": "Variables",
+      "description": "Give an existing type a new name",
+      "tags": ["type", "alias"],
+      "content": "type Degrees = float"
+    },
+    {
+      "id": "forge_print",
+      "name": "Print",
+      "category": "Output",
+      "description": "Print to stdout, with and without a trailing newline",
+      "tags": ["print", "output"],
+      "content": "print(\"Hello\")\nprint_raw(\"no newline\")"
+    },
+    {
+      "id": "forge_read_line",
+      "name": "Read Input",
+      "category": "Input",
+      "description": "Read a line from stdin",
+      "tags": ["input"],
+      "content": "var line: str = read_line()"
+    },
+    {
+      "id": "forge_if_elif_else",
+      "name": "If/Elif/Else",
+      "category": "Conditionals",
+      "description": "Conditional statement (no truthiness — compare explicitly)",
+      "tags": ["if", "conditional"],
+      "content": "if grade >= 90:\n    print(\"A\")\nelif grade >= 80:\n    print(\"B\")\nelse:\n    print(\"F\")"
+    },
+    {
+      "id": "forge_for_range",
+      "name": "For/Range Loop",
+      "category": "Loops",
+      "description": "Range-based for loop (half-open)",
+      "tags": ["loop", "for", "range"],
+      "content": "for i in range(0, 10):\n    print(i)"
+    },
+    {
+      "id": "forge_for_countdown",
+      "name": "For Loop with Step",
+      "category": "Loops",
+      "description": "Countdown using a 3-argument range",
+      "tags": ["loop", "for", "step"],
+      "content": "for i in range(10, 0, -1):\n    print(i)"
+    },
+    {
+      "id": "forge_for_each",
+      "name": "For Each",
+      "category": "Loops",
+      "description": "Iterate over an array",
+      "tags": ["loop", "for"],
+      "content": "for item in collection:\n    process(item)"
+    },
+    {
+      "id": "forge_while",
+      "name": "While Loop",
+      "category": "Loops",
+      "description": "Condition-based loop",
+      "tags": ["loop", "while"],
+      "content": "while i < 10:\n    i += 1"
+    },
+    {
+      "id": "forge_loop_infinite",
+      "name": "Infinite Loop",
+      "category": "Loops",
+      "description": "Loop until an explicit break",
+      "tags": ["loop", "break"],
+      "content": "loop:\n    var input: str = read_line()\n    if input == \"quit\":\n        break"
+    },
+    {
+      "id": "forge_proc",
+      "name": "Proc (Function)",
+      "category": "Functions",
+      "description": "Define a procedure with typed params and return",
+      "tags": ["function", "proc"],
+      "content": "proc add(a: int, b: int) -> int:\n    return a + b"
+    },
+    {
+      "id": "forge_proc_void",
+      "name": "Void Proc",
+      "category": "Functions",
+      "description": "A procedure with no return value",
+      "tags": ["function", "void"],
+      "content": "proc greet() -> void:\n    print(\"Hello!\")"
+    },
+    {
+      "id": "forge_proc_ref_params",
+      "name": "Proc with Ref Params",
+      "category": "Functions",
+      "description": "Pass parameters by reference",
+      "tags": ["function", "ref"],
+      "content": "proc swap(a: ref int, b: ref int) -> void:\n    var tmp: int = a\n    a = b\n    b = tmp\n\nswap(ref x, ref y)"
+    },
+    {
+      "id": "forge_main",
+      "name": "Main Entry Point",
+      "category": "Structure",
+      "description": "Program entry point",
+      "tags": ["main", "entry"],
+      "content": "proc main() -> void:\n    print(\"Hello, World!\")"
+    },
+    {
+      "id": "forge_record",
+      "name": "Record",
+      "category": "Data Structures",
+      "description": "Define and instantiate a plain data record",
+      "tags": ["record", "struct"],
+      "content": "record Point:\n    x: int\n    y: int\n\nvar p: Point = Point { x: 10, y: 20 }\nprint(p.x)"
+    },
+    {
+      "id": "forge_array",
+      "name": "Array",
+      "category": "Data Structures",
+      "description": "Fixed and dynamic arrays",
+      "tags": ["array"],
+      "content": "var coords: [float; 3] = [1.0, 2.0, 3.0]\n\nvar log: []str = []\nappend(log, \"event one\")\nvar n: int = len(log)"
+    },
+    {
+      "id": "forge_map",
+      "name": "Map",
+      "category": "Data Structures",
+      "description": "Declare a map and check/access a key",
+      "tags": ["map"],
+      "content": "var cfg: map[str, int] = {}\ncfg[\"timeout\"] = 30\nif has_key(cfg, \"timeout\"):\n    print(str(cfg[\"timeout\"]))"
+    },
+    {
+      "id": "forge_optional",
+      "name": "Optional Type",
+      "category": "Data Structures",
+      "description": "FORGE has no null — use ?T with some/none",
+      "tags": ["optional", "none"],
+      "content": "var found: ?int = none\nvar result: ?int = some(42)\n\nif found is some:\n    print(str(found.value))\nelse:\n    print(\"not found\")"
+    },
+    {
+      "id": "forge_string_ops",
+      "name": "String Operations",
+      "category": "Strings",
+      "description": "Concatenation and common string built-ins",
+      "tags": ["string"],
+      "content": "var greeting: str = hello + \", \" + world + \"!\"\nprint(len(hello))\nprint(trim(greeting))\nprint(contains(greeting, \"World\"))"
+    },
+    {
+      "id": "forge_panic_assert",
+      "name": "Panic/Assert",
+      "category": "Error Handling",
+      "description": "Abort on an unrecoverable error or invariant violation",
+      "tags": ["panic", "assert"],
+      "content": "assert divisor != 0, \"divisor must not be zero\"\n\nif divisor == 0:\n    panic(\"division by zero\")"
+    },
+    {
+      "id": "forge_find_optional",
+      "name": "Function Returning Optional",
+      "category": "Error Handling",
+      "description": "Use ?T to signal a recoverable absence of a value",
+      "tags": ["optional", "error"],
+      "content": "proc find_index(nums: []int, target: int) -> ?int:\n    for i in range(0, len(nums)):\n        if nums[i] == target:\n            return some(i)\n    return none"
+    },
+    {
+      "id": "forge_import",
+      "name": "Import",
+      "category": "Modules",
+      "description": "Import another module and an aliased module",
+      "tags": ["import"],
+      "content": "import sensors\nimport nmea_parser as nmea"
+    },
+    {
+      "id": "forge_export",
+      "name": "Export",
+      "category": "Modules",
+      "description": "Export a record, const, or proc for use by other modules",
+      "tags": ["export"],
+      "content": "export record Sensor:\n    id: int\n    name: str\n\nexport proc read(s: Sensor) -> float:\n    return 0.0"
+    },
+    {
+      "id": "forge_channel",
+      "name": "Channel (pub/sub)",
+      "category": "Events",
+      "description": "Declare a channel and emit/receive events",
+      "tags": ["channel", "emit", "on"],
+      "content": "channel depth_reading: float\n\nemit depth_reading -> 12.5\n\non depth_reading as value:\n    print(\"Depth: \" + str(value))"
+    },
+    {
+      "id": "forge_operators",
+      "name": "Operators Reference",
+      "category": "Reference",
+      "description": "Arithmetic, comparison, logical, and range operators",
+      "tags": ["operators"],
+      "content": "# Arithmetic: + - * / %\n# Comparison: == != < > <= >=\n# Logical:    and or not\n# Range:      0..10 (exclusive)  0..=10 (inclusive)"
+    }
+  ]
+}
